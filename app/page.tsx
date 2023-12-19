@@ -1,6 +1,9 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import React from "react";
+import Cards from "./ui/cards";
+
+// check this import - import Cards from "@/app/ui/dashboard/cards";
 
 export default function Home() {
   return (
@@ -13,7 +16,7 @@ export default function Home() {
           {/* <SearchBar /> */}
         </div>
         {/* <FilterDrawer /> */}
-        {/* <Cards /> */}
+        <Cards />
       </div>
     </div>
   );
