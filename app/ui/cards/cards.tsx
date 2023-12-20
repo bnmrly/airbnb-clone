@@ -14,7 +14,21 @@ export default async function Cards() {
           <ul className={styles["airbnb-clone__cards-list"]}>
             {staysData.map((stay: { title: string; photo: string }) => {
               console.log("{staysData.map --- stay:", stay);
-              return <p key={stay.photo}>{stay.title}</p>;
+
+              return (
+                <div
+                  className={styles["airbnb-mock__image-container"]}
+                  key={stay.photo}
+                  style={{
+                    backgroundImage: `url(${stay.photo})`,
+                    backgroundPosition: "center",
+                    backgroundSize: "cover",
+                    backgroundRepeat: "no-repeat",
+                  }}
+                >
+                  <p>{stay.title}</p>;
+                </div>
+              );
             })}
           </ul>
         </div>
