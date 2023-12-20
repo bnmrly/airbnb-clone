@@ -7,17 +7,19 @@ import Cards from "./ui/cards";
 
 export default function Home() {
   return (
-    <div className={styles.App}>
-      <div className={styles["airbnb - clone__container"]}>
-        <div className={styles["airbnb-clone__header"]}>
+    <div className={styles["app-container"]}>
+      <header className={styles["airbnb - clone__header"]}>
+        <div className={styles["airbnb-clone__container"]}>
           <a className={styles["airbnb-clone__home-link"]} href="/">
-            <Image src="/logo.svg" alt="logo" width={97} height={26} />
+            <Image src="/logo.svg" alt="logo" width={97} height={26} priority />
           </a>
           {/* <SearchBar /> */}
         </div>
         {/* <FilterDrawer /> */}
+      </header>
+      <main>
         <Cards />
-      </div>
+      </main>
     </div>
   );
 }

@@ -1,14 +1,14 @@
-.App {
+.app-container {
   padding: 20px 10px;
 }
 
 @media screen and (min-width: 1200px) {
-  .App {
+  .app-container {
     padding: 40px 80px;
   }
 }
 
-.airbnb-clone__container {
+.airbnb-clone__header {
   margin-left: auto;
   margin-right: auto;
   display: grid;
@@ -21,14 +21,14 @@
   grid-template-columns: 100%;
 }
 
-.airbnb-clone__header {
+.airbnb-clone__container {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
 }
 
 @media screen and (min-width: 576px) {
-  .airbnb-clone__header {
+  .airbnb-clone__container {
     flex-direction: row;
   }
 }
