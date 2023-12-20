@@ -1,4 +1,16 @@
-.cards-list {
+.heading {
+  font-size: 1.1rem;
+  color: #333333;
+  color: red;
+}
+
+.holiday-title {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.list {
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -85,13 +97,13 @@
   height: 55px;
 }
 
-.airbnb-clone__text-container {
+.cards__text-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.airbnb-clone__result-count {
+.cards__result-count {
   display: inline-block;
   color: #4f4f4f;
   font-size: 0.9rem;

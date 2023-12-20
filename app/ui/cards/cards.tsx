@@ -7,11 +7,23 @@ export default async function Cards() {
   // console.log("----Cards --- staysData:", staysData);
 
   // Come back to this class and use an id as is just being used for the grid-template area
+
+  // staysData conditon for the heading needs changing to searchResults
   return (
     <>
+      {staysData.length > 0 && (
+        <div className={styles["airbnb-clone__text-container"]}>
+          <h1 className={styles["heading"]}>Stays in {staysData[0].country}</h1>
+          <p className={styles["result-count"]}>
+            {staysData.length > 1
+              ? `${staysData.length} stays`
+              : `${staysData.length} stay`}
+          </p>
+        </div>
+      )}
       {!!staysData.length && (
-        <div className={styles["airbnb-clone__cards-container"]}>
-          <ul className={styles["cards-list"]}>
+        <div className={styles["cards-container"]}>
+          <ul className={styles["list"]}>
             {staysData.map(
               (stay: {
                 title: string;
