@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import React from "react";
-import Cards from "./ui/cards";
+import Cards from "./ui/cards/cards";
 
 // check this import - import Cards from "@/app/ui/dashboard/cards";
 
