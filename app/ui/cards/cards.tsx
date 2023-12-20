@@ -47,7 +47,7 @@ export default async function Cards() {
                       )}
                       <div className={styles["card-meta-rating__container"]}>
                         <Image
-                          className={styles["airbnb-clone__rating-image"]}
+                          className={styles["card__rating-image"]}
                           src="/star.svg"
                           alt="star rating"
                           height={17}
