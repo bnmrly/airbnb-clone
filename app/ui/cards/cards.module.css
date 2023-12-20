@@ -1,15 +1,4 @@
-.airbnb-clone__heading {
-  font-size: 1.1rem;
-  color: #333333;
-}
-
-.airbnb-clone__holiday-title {
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 29px;
-}
-
-.airbnb-clone__cards-list {
+.cards-list {
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -22,17 +11,12 @@
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   row-gap: 32px;
   column-gap: 10px;
-  border: 10px solid yellow;
 }
 
-.airbnb-clone__image-container {
+.card__image-container {
   height: 269px;
   margin-bottom: 15px;
   border-radius: 15px;
-}
-
-.airbnb-clone__image {
-  height: 100%;
 }
 
 .card__meta-container {
