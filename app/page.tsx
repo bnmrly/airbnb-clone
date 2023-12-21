@@ -1,11 +1,15 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import React from "react";
+import { fetchCardData } from "./lib/data";
 import Cards from "./ui/cards/cards";
 
 // check this import - import Cards from "@/app/ui/dashboard/cards";
 
-export default function Home() {
+// name of this function - home?
+
+export default async function Home() {
+  const { staysData } = await fetchCardData();
   return (
     <div className={styles["app-container"]}>
       <header className={styles["airbnb - clone__header"]}>
@@ -18,7 +22,7 @@ export default function Home() {
         {/* <FilterDrawer /> */}
       </header>
       <main>
-        <Cards />
+        <Cards staysData={staysData} />
       </main>
     </div>
   );
