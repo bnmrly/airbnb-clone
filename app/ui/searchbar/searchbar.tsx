@@ -77,7 +77,9 @@ export default function SearchBar({ staysData }: { staysData: Stay[] }) {
               // disabled={disabled}
               disabled={true}
             >
-              <SearchIcon />
+              <div className={styles["icon-container"]}>
+                <SearchIcon />
+              </div>
             </button>
           </div>
         </form>

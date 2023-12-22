@@ -20,6 +20,7 @@
   overflow: hidden;
   font-size: 0.9rem;
   color: #333333;
+  box-sizing: content-box;
 }
 
 
@@ -46,6 +47,8 @@ this has this class on it too - need to add and tweak */
   font-family: "Mulish", sans-serif;
   display: flex;
   align-items: center;
+  padding: 0 16px;
+  border-right: 1px solid #f2f2f2;
 }
 
 /* multiple classes are knackered */
@@ -64,6 +67,17 @@ this has this class on it too - need to add and tweak */
   align-items: center;
   color: rgba(235, 87, 87, 0.9);
   cursor: pointer;
+}
+
+.icon-container {
+
+
+  /* need to update config to be able to do below, see -  https://nextjs.org/docs/pages/building-your-application/configuring/post-css and https://github.com/vercel/next.js/issues/10475 */
+  width: 24px;
+  height: 24px;
+  /* svg {
+    color: rgba(235, 87, 87, 0.9);
+  }  */
 }
 
 
