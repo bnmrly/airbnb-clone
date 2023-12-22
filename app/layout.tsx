@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat, Mulish } from "next/font/google";
 import "./globals.css";
 
-// come back to this
+// come back to this - mulish and anti-aliasing
 
 const montserrat = Montserrat({
   subsets: ["latin"],

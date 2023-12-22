@@ -365,6 +365,7 @@ body {
 
 body {
     font-family: "Montserrat", sans-serif;
+    /* -webkit-font-smoothing: anti-aliased; */
 }
 
 a {
