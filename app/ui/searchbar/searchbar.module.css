@@ -33,7 +33,7 @@
   padding: 0 16px;
   border-right: 1px solid #f2f2f2;
   color: #333333;
-  /* -webkit-font-smoothing: antialiased; */
+  -webkit-font-smoothing: antialiased;
 }
 /* 
 this has this class on it too - need to add and tweak */
@@ -41,7 +41,8 @@ this has this class on it too - need to add and tweak */
 .input--location {
   background-color: transparent;
   /* hack for input type="text" */
-  max-width: 108px;
+  /* max-width: 108px; */
+  max-width: 140px;
 }
 
 .guests-container {
