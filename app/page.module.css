@@ -9,28 +9,21 @@
 }
 
 .airbnb-clone__header {
-  margin-left: auto;
-  margin-right: auto;
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-areas:
-    "airbnb-clone__header"
-    "airbnb-clone__text-container"
-    "airbnb-clone__cards-container";
-  grid-template-rows: 120px 80px auto;
-  grid-template-columns: 100%;
-}
-
-.airbnb-clone__container {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  margin-bottom: 10px;
 }
 
 @media screen and (min-width: 576px) {
-  .airbnb-clone__container {
+  .airbnb-clone__header{
     flex-direction: row;
+    margin-bottom: 20px;
   }
+}
+
+.airbnb-clone__home-link {
+  margin-bottom: 30px;
 }
 
 .airbnb-clone__logo--filter-drawer-visible-true {

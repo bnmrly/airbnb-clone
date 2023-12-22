@@ -14,7 +14,7 @@ interface Stay {
   photo: string;
 }
 
-export default async function Ccards({ staysData }: { staysData: Stay[] }) {
+export default async function Cards({ staysData }: { staysData: Stay[] }) {
   console.log("12345Cards --- staysData:", staysData);
 
   // Come back to this class and use an id as is just being used for the grid-template area
