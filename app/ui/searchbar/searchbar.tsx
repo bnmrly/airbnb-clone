@@ -30,7 +30,7 @@ export const SearchBar = ({ staysData }: { staysData: Stay[] }) => {
         <form>
           <div className={styles["input-container"]}>
             <input
-              className={`${styles["input"]} ${styles["input--location"]}`}
+              className={`${styles["input"]} ${styles["input-location"]}`}
               type="text"
               readOnly
               name="location"

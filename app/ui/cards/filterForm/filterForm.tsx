@@ -25,7 +25,9 @@ interface Stay {
 export const FilterForm = ({ staysData }: { staysData: Stay[] }) => {
   console.log("FilterForm --- staysData:", staysData);
 
-  const filterDrawerVisible = true;
+  // needs toggling
+
+  const filterDrawerVisible = false;
 
   const guestFilterVisible = true;
 

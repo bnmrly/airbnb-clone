@@ -8,7 +8,7 @@
   }
 }
 
-.airbnb-clone__header {
+.header {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -16,16 +16,16 @@
 }
 
 @media screen and (min-width: 576px) {
-  .airbnb-clone__header{
+  .header{
     flex-direction: row;
     margin-bottom: 20px;
   }
 }
 
-.airbnb-clone__home-link {
+.link {
   margin-bottom: 30px;
 }
 
-.airbnb-clone__logo--filter-drawer-visible-true {
+/* .airbnb-clone__logo--filter-drawer-visible-true {
   opacity: 0;
-}
+} */
