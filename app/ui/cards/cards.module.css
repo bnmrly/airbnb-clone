@@ -1,16 +1,19 @@
+.text-container {
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .heading {
   font-size: 1.1rem;
   color: #333333;
 }
 
-.holiday-title {
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 29px;
-}
-
-.airbnb-clone__text-container {
-  padding: 20px 0;
+.result-count {
+  display: inline-block;
+  color: #4f4f4f;
+  font-size: 0.9rem;
 }
 
 .list {
@@ -28,7 +31,7 @@
   column-gap: 10px;
 }
 
-.card__image-container {
+.image-container {
   height: 269px;
   margin-bottom: 15px;
   border-radius: 15px;
@@ -98,18 +101,6 @@
   border-radius: 16px;
   width: 297px;
   height: 55px;
-}
-
-.airbnb-clone__text-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.cards__result-count {
-  display: inline-block;
-  color: #4f4f4f;
-  font-size: 0.9rem;
 }
 
 .airbnb-clone__no-results,

@@ -22,7 +22,7 @@ export const Cards = ({ staysData }: { staysData: Stay[] }) => {
   return (
     <>
       {staysData.length > 0 && (
-        <div className={styles["airbnb-clone__text-container"]}>
+        <div className={styles["text-container"]}>
           <h1 className={styles["heading"]}>Stays in {staysData[0].country}</h1>
           <p className={styles["result-count"]}>
             {staysData.length > 1
@@ -32,13 +32,13 @@ export const Cards = ({ staysData }: { staysData: Stay[] }) => {
         </div>
       )}
       {!!staysData.length && (
-        <div className={styles["cards-container"]}>
+        <div>
           <ul className={styles["list"]}>
             {staysData.map((stay: Stay) => {
               return (
-                <div className={styles["card"]} key={stay.photo}>
+                <div key={stay.photo}>
                   <div
-                    className={styles["card__image-container"]}
+                    className={styles["image-container"]}
                     style={{
                       backgroundImage: `url(${stay.photo})`,
                       backgroundPosition: "center",
