@@ -18,8 +18,7 @@ interface Stay {
   photo: string;
 }
 
-export default function SearchBar({ staysData }: { staysData: Stay[] }) {
-  console.log("SearchBar --- staysData:", staysData);
+export const SearchBar = ({ staysData }: { staysData: Stay[] }) => {
   const totalGuestNumber = 0;
   const childGuestNumber = 5;
   const adultGuestNumber = 2;
@@ -86,4 +85,4 @@ export default function SearchBar({ staysData }: { staysData: Stay[] }) {
       </div>
     </>
   );
-}
+};

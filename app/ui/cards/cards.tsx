@@ -14,9 +14,7 @@ interface Stay {
   photo: string;
 }
 
-export default async function Cards({ staysData }: { staysData: Stay[] }) {
-  console.log("12345Cards --- staysData:", staysData);
-
+export const Cards = ({ staysData }: { staysData: Stay[] }) => {
   // Come back to this class and use an id as is just being used for the grid-template area
 
   // staysData conditon for the heading needs changing to searchResults
@@ -83,4 +81,4 @@ export default async function Cards({ staysData }: { staysData: Stay[] }) {
       )}
     </>
   );
-}
+};
