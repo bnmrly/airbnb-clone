@@ -46,32 +46,26 @@ export const Cards = ({ staysData }: { staysData: Stay[] }) => {
                       backgroundRepeat: "no-repeat",
                     }}
                   ></div>
-                  <div className={styles["card__meta-container"]}>
+                  <div className={styles["meta-container"]}>
                     {stay.superHost && (
-                      <div className={styles["card__meta-superhost"]}>
-                        Superhost
-                      </div>
+                      <div className={styles["meta-superhost"]}>Superhost</div>
                     )}
 
-                    <p className={styles["card__meta-type"]}>{stay.type} </p>
+                    <p className={styles["meta-type"]}>{stay.type} </p>
                     {stay.beds && (
-                      <p className={styles["card__meta-beds"]}>
-                        . {stay.beds} beds
-                      </p>
+                      <p className={styles["meta-beds"]}>. {stay.beds} beds</p>
                     )}
-                    <div className={styles["card-meta-rating__container"]}>
+                    <div className={styles["meta-rating__container"]}>
                       <Image
-                        className={styles["card__rating-image"]}
+                        className={styles["rating-image"]}
                         src="/star.svg"
                         alt="star rating"
                         height={17}
                         width={16}
                       />
-                      <p className={styles["card__meta-rating"]}>
-                        {stay.rating}
-                      </p>
+                      <p className={styles["meta-rating"]}>{stay.rating}</p>
                     </div>
-                    <p className={styles["card__meta-title"]}>{stay.title}</p>
+                    <p className={styles["meta-title"]}>{stay.title}</p>
                   </div>
                 </div>
               );
