@@ -41,7 +41,7 @@ export const FilterForm = ({ staysData }: { staysData: Stay[] }) => {
     <>
       {filterDrawerVisible && (
         <div className={styles["container"]}>
-          <div className={styles["airbnb-mock__filter-drawer"]}>
+          <div className={styles["inner-container"]}>
             <div className={styles["heading-container"]}>
               {/* change this from a p tag */}
               <p className={styles["heading"]}>Edit your search</p>
@@ -52,97 +52,89 @@ export const FilterForm = ({ staysData }: { staysData: Stay[] }) => {
                 <CloseIcon />
               </button>
             </div>
-            <div>
-              <form className={styles["form"]}>
+            <form className={styles["form"]}>
+              <div className={styles["input-container"]}>
+                <label
+                  // htmlFor="filterDrawerLocation"
+                  htmlFor="location"
+                  className={styles["label"]}
+                >
+                  Location
+                </label>
+                <input
+                  className={styles["input"]}
+                  type="text"
+                  name="location"
+                  required
+                  // look at the id
+                  id="searchFilter"
+                  placeholder="Helsinki, Finland"
+                  // value={locationSearchOption}
+                  readOnly
+                  // onClick={handleOpenLocationFilterChange}
+                />
+              </div>
+
+              {/* come back to htmlfor */}
+
+              <div className={styles["input-container"]}>
+                <label
+                  // htmlFor="filterDrawerGuests"
+                  htmlFor="guests"
+                  className={styles["label"]}
+                >
+                  Guests
+                </label>
                 <div
-                  className={`${styles["input__container"]} ${styles["input__container--location"]}`}
+                  className={
+                    styles[`guest-number-container-${totalGuestNumber}`]
+                  }
+                  // onClick={handleOpenGuestFilterChange}
                 >
-                  <label
-                    // htmlFor="filterDrawerLocation"
-                    htmlFor="location"
-                    className={styles["label"]}
-                  >
-                    Location
-                  </label>
-                  <input
-                    className={styles["input"]}
-                    type="text"
-                    name="location"
-                    required
-                    // look at the id
-                    id="searchFilter"
-                    placeholder="Helsinki, Finland"
-                    // value={locationSearchOption}
-                    readOnly
-                    // onClick={handleOpenLocationFilterChange}
-                  />
+                  {totalGuestNumber < 1
+                    ? "Add Guests"
+                    : `${totalGuestNumber} guests`}
                 </div>
+                <input
+                  type="hidden"
+                  readOnly
+                  name="guests"
+                  value={totalGuestNumber}
+                />
+                <input type="hidden" name="children" value={childGuestNumber} />
+                <input
+                  type="hidden"
+                  readOnly
+                  name="adults"
+                  value={adultGuestNumber}
+                />
+              </div>
 
-                {/* come back to htmlfor */}
-
-                <div className={styles["input__container"]}>
-                  <label
-                    // htmlFor="filterDrawerGuests"
-                    htmlFor="guests"
-                    className={styles["label"]}
-                  >
-                    Guests
-                  </label>
-                  <div
-                    className={
-                      styles[`guest-number__container-${totalGuestNumber}`]
-                    }
-                    // onClick={handleOpenGuestFilterChange}
-                  >
-                    {totalGuestNumber < 1
-                      ? "Add Guests"
-                      : `${totalGuestNumber} guests`}
-                  </div>
-                  <input
-                    type="hidden"
-                    readOnly
-                    name="guests"
-                    value={totalGuestNumber}
-                  />
-                  <input
-                    type="hidden"
-                    name="children"
-                    value={childGuestNumber}
-                  />
-                  <input
-                    type="hidden"
-                    readOnly
-                    name="adults"
-                    value={adultGuestNumber}
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className={styles["button"]}
-                  // disabled={disabledSubmit}
-                  // onSubmit={() => {
-                  //   setFilterDrawerVisible(!filterDrawerVisible);
-                  //   handleSearchFormSubmit();
-                  // }}
-                >
-                  <SearchIcon className={styles["button__icon"]} />
-                  Search
-                </button>
-              </form>
-            </div>
-            <div className={styles["guests-container"]}>
+              <button
+                type="submit"
+                className={styles["button"]}
+                // disabled={disabledSubmit}
+                // onSubmit={() => {
+                //   setFilterDrawerVisible(!filterDrawerVisible);
+                //   handleSearchFormSubmit();
+                // }}
+              >
+                <SearchIcon className={styles["button-icon"]} />
+                Search
+              </button>
+            </form>
+            <div className={styles["guests-location-container"]}>
               {locationFilterVisible && (
-                <div className="filter__container--location">
-                  <ul className="filter-location__list">
-                    <li>hi</li>
+                <div className={styles["location-container"]}>
+                  <ul className={styles["location-list"]}>
+                    <li className={styles["location-list-item"]}>hi</li>
                     {/* {uniqueLocations.map((city) => (
                       <li
-                        className="filter-location__list-item"
+                        className={styles["location-list-item"]}
                         key={uniqid()}
                         onClick={handlelocationSearchChange}
                       >
-                        <LocationOnIcon className="filter-location-list-item__icon" />
+                        <LocationOnIcon className={styles["location-list-item-icon"]} />
                         {city}
                       </li>
                     ))} */}
@@ -150,23 +142,23 @@ export const FilterForm = ({ staysData }: { staysData: Stay[] }) => {
                 </div>
               )}
               {guestFilterVisible && (
-                <div className={styles["filter__container--guests__container"]}>
-                  <div className={styles["guests__container--adults"]}>
-                    <p className={styles["guests__title"]}>Adults</p>
-                    <p className={styles["guests__meta"]}>Ages 13 or above </p>
-                    <div className={styles["guests__button-container"]}>
+                <div className={styles["guests-container"]}>
+                  <div className={styles["adults-guests-container"]}>
+                    <p className={styles["guests-title"]}>Adults</p>
+                    <p className={styles["guests-meta"]}>Ages 13 or above </p>
+                    <div className={styles["guests-button-container"]}>
                       <button
                         disabled={adultGuestNumber < 1}
                         className={
                           styles[
-                            `guests__button--disabled-${adultGuestNumber < 1}`
+                            `guests-button-disabled-${adultGuestNumber < 1}`
                           ]
                         }
                         // onClick={decrementAdultGuestNumber}
                       >
                         <RemoveIcon />
                       </button>
-                      <p className={styles["guest__number-value"]}>
+                      <p className={styles["guest-number-value"]}>
                         {adultGuestNumber}
                       </p>
                       <button
@@ -178,13 +170,13 @@ export const FilterForm = ({ staysData }: { staysData: Stay[] }) => {
                     </div>
                   </div>
                   <div>
-                    <p className={styles["guests__title"]}>Children</p>
-                    <p className={styles["guests__meta"]}>Ages 2-12</p>
-                    <div className={styles["guests__button-container"]}>
+                    <p className={styles["guests-title"]}>Children</p>
+                    <p className={styles["guests-meta"]}>Ages 2-12</p>
+                    <div className={styles["guests-button-container"]}>
                       <button
                         className={
                           styles[
-                            `guests__button--disabled-${childGuestNumber < 1}`
+                            `guests-button--disabled-${childGuestNumber < 1}`
                           ]
                         }
                         disabled={childGuestNumber < 1}
@@ -192,7 +184,7 @@ export const FilterForm = ({ staysData }: { staysData: Stay[] }) => {
                       >
                         <RemoveIcon />
                       </button>
-                      <p className={styles["guest__number-value"]}>
+                      <p className={styles["guest-number-value"]}>
                         {childGuestNumber}
                       </p>
                       <button
