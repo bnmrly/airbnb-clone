@@ -25,8 +25,6 @@ interface Stay {
 }
 
 export const FilterForm = ({ staysData }: { staysData: Stay[] }) => {
-  // TODO: LOOK AT USE CLIENT IN THESE COMPONENTS
-
   const appContext = useContext(StaysContext);
 
   const filterDrawerVisible = true;
