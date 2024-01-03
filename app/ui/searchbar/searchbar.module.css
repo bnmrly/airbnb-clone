@@ -38,7 +38,7 @@
 /* 
 this has this class on it too - need to add and tweak */
 
-.input--location {
+.input-location {
   background-color: transparent;
   /* hack for input type="text" */
   /* max-width: 108px; */
@@ -72,8 +72,6 @@ this has this class on it too - need to add and tweak */
 }
 
 .icon-container {
-
-
   /* need to update config to be able to do below, see -  https://nextjs.org/docs/pages/building-your-application/configuring/post-css and https://github.com/vercel/next.js/issues/10475 */
   width: 24px;
   height: 24px;

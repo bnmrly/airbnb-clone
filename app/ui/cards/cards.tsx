@@ -14,9 +14,7 @@ interface Stay {
   photo: string;
 }
 
-export default async function Cards({ staysData }: { staysData: Stay[] }) {
-  console.log("12345Cards --- staysData:", staysData);
-
+export const Cards = ({ staysData }: { staysData: Stay[] }) => {
   // Come back to this class and use an id as is just being used for the grid-template area
 
   // staysData conditon for the heading needs changing to searchResults
@@ -24,7 +22,7 @@ export default async function Cards({ staysData }: { staysData: Stay[] }) {
   return (
     <>
       {staysData.length > 0 && (
-        <div className={styles["airbnb-clone__text-container"]}>
+        <div className={styles["text-container"]}>
           <h1 className={styles["heading"]}>Stays in {staysData[0].country}</h1>
           <p className={styles["result-count"]}>
             {staysData.length > 1
@@ -34,13 +32,13 @@ export default async function Cards({ staysData }: { staysData: Stay[] }) {
         </div>
       )}
       {!!staysData.length && (
-        <div className={styles["cards-container"]}>
+        <div>
           <ul className={styles["list"]}>
             {staysData.map((stay: Stay) => {
               return (
-                <div className={styles["card"]} key={stay.photo}>
+                <div key={stay.photo}>
                   <div
-                    className={styles["card__image-container"]}
+                    className={styles["image-container"]}
                     style={{
                       backgroundImage: `url(${stay.photo})`,
                       backgroundPosition: "center",
@@ -48,32 +46,26 @@ export default async function Cards({ staysData }: { staysData: Stay[] }) {
                       backgroundRepeat: "no-repeat",
                     }}
                   ></div>
-                  <div className={styles["card__meta-container"]}>
+                  <div className={styles["meta-container"]}>
                     {stay.superHost && (
-                      <div className={styles["card__meta-superhost"]}>
-                        Superhost
-                      </div>
+                      <div className={styles["meta-superhost"]}>Superhost</div>
                     )}
 
-                    <p className={styles["card__meta-type"]}>{stay.type} </p>
+                    <p className={styles["meta-type"]}>{stay.type} </p>
                     {stay.beds && (
-                      <p className={styles["card__meta-beds"]}>
-                        . {stay.beds} beds
-                      </p>
+                      <p className={styles["meta-beds"]}>. {stay.beds} beds</p>
                     )}
-                    <div className={styles["card-meta-rating__container"]}>
+                    <div className={styles["meta-rating__container"]}>
                       <Image
-                        className={styles["card__rating-image"]}
+                        className={styles["rating-image"]}
                         src="/star.svg"
                         alt="star rating"
                         height={17}
                         width={16}
                       />
-                      <p className={styles["card__meta-rating"]}>
-                        {stay.rating}
-                      </p>
+                      <p className={styles["meta-rating"]}>{stay.rating}</p>
                     </div>
-                    <p className={styles["card__meta-title"]}>{stay.title}</p>
+                    <p className={styles["meta-title"]}>{stay.title}</p>
                   </div>
                 </div>
               );
@@ -83,4 +75,4 @@ export default async function Cards({ staysData }: { staysData: Stay[] }) {
       )}
     </>
   );
-}
+};

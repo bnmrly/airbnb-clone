@@ -1,16 +1,19 @@
+.text-container {
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .heading {
   font-size: 1.1rem;
   color: #333333;
 }
 
-.holiday-title {
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 29px;
-}
-
-.airbnb-clone__text-container {
-  padding: 20px 0;
+.result-count {
+  display: inline-block;
+  color: #4f4f4f;
+  font-size: 0.9rem;
 }
 
 .list {
@@ -28,13 +31,13 @@
   column-gap: 10px;
 }
 
-.card__image-container {
+.image-container {
   height: 269px;
   margin-bottom: 15px;
   border-radius: 15px;
 }
 
-.card__meta-container {
+.meta-container {
   display: flex;
   align-items: center;
   min-height: 60px;
@@ -42,7 +45,7 @@
   flex-wrap: wrap;
 }
 
-.card__meta-superhost {
+.meta-superhost {
   margin-right: 1rem;
   padding: 5px 10px;
   font-weight: bold;
@@ -52,8 +55,8 @@
   font-size: 0.65rem;
 }
 
-.card__meta-type,
-.card__meta-beds {
+.meta-type,
+.meta-beds {
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
@@ -65,54 +68,42 @@
   margin-left: 1ch;
 }
 
-.card-meta-rating__container {
+.meta-rating__container {
   display: flex;
   align-items: center;
   margin-left: auto;
 }
 
-.card__rating-image {
+.rating-image {
   margin-right: 7px;
 }
 
-.card__meta-rating {
+.meta-rating {
   color: #4f4f4f;
   margin: 0;
 }
 
-.card__meta-title {
+.meta-title {
   margin: 0;
   flex-basis: 100%;
   font-size: 0.9rem;
 }
 
-.airbnb-clone__search-filter-container {
+/* .airbnb-clone__search-filter-container {
   position: absolute;
   top: 32px;
   right: 90px;
   height: 55px;
-}
+} */
 
-.airbnb-clone__search-input {
+/* .airbnb-clone__search-input {
   box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
   border-radius: 16px;
   width: 297px;
   height: 55px;
-}
+} */
 
-.airbnb-clone__text-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.cards__result-count {
-  display: inline-block;
-  color: #4f4f4f;
-  font-size: 0.9rem;
-}
-
-.airbnb-clone__no-results,
+/* .airbnb-clone__no-results,
 .airbnb-clone__loading {
   color: #828282;
-}
+} */
