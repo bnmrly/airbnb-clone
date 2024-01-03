@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
+// import Image from "next/image";
 import React, { useContext } from "react";
 import CloseIcon from "@material-ui/icons/Close";
-import LocationOnIcon from "@material-ui/icons/LocationOn";
+// import LocationOnIcon from "@material-ui/icons/LocationOn";
 import RemoveIcon from "@material-ui/icons/Remove";
 import AddIcon from "@material-ui/icons/Add";
 import SearchIcon from "@material-ui/icons/Search";
@@ -25,12 +25,9 @@ interface Stay {
 }
 
 export const FilterForm = ({ staysData }: { staysData: Stay[] }) => {
-  console.log("FilterForm --- staysData:", staysData);
+  // TODO: LOOK AT USE CLIENT IN THESE COMPONENTS
 
   const appContext = useContext(StaysContext);
-  console.log("FilterForm --- appContext:", appContext);
-
-  // needs toggling
 
   const filterDrawerVisible = true;
 

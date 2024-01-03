@@ -1,19 +1,19 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./page.module.css";
-import React, { useState } from "react";
-import { fetchCardData } from "./lib/data";
+import React, { useState, useContext } from "react";
 import { Cards } from "./ui/cards/cards";
 import { SearchBar } from "./ui/searchBar/searchBar";
 import { FilterForm } from "./ui/filterForm/filterForm";
 // check this import - import Cards from "@/app/ui/dashboard/cards";
 
-// arrow functions for components
+import { StaysContext } from "./context/index";
 
-const Home = async () => {
-  const { staysData } = await fetchCardData();
+const Home = () => {
+  const appContext = useContext(StaysContext);
+  const { staysData } = appContext;
 
-  // this needs to be false
-  // const [filterDrawerVisible, setFilterDrawerVisible] = useState(true);
   return (
     <div className={styles["app-container"]}>
       <header className={styles["header"]}>
@@ -24,10 +24,7 @@ const Home = async () => {
         <FilterForm staysData={staysData} />
       </header>
       <main>
-        <Cards
-          staysData={staysData}
-          // setFilterDrawerVisible={setFilterDrawerVisible}
-        />
+        <Cards staysData={staysData} />
       </main>
     </div>
   );
