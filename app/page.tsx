@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { fetchCardData } from "./lib/data";
 import { Cards } from "./ui/cards/cards";
 import { SearchBar } from "./ui/searchBar/searchBar";
-import { FilterForm } from "./ui/cards/filterForm/filterForm";
+import { FilterForm } from "./ui/filterForm/filterForm";
 // check this import - import Cards from "@/app/ui/dashboard/cards";
 
 // arrow functions for components

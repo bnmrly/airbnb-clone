@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat, Mulish } from "next/font/google";
 import "./globals.css";
+import { StaysProvider } from "./context/index";
 
 // come back to this - mulish and anti-aliasing
 
@@ -26,9 +27,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${montserrat.className} ${mulish.className}`}>
-        {children}
-      </body>
+      <StaysProvider>
+        <body className={`${montserrat.className} ${mulish.className}`}>
+          {children}
+        </body>
+      </StaysProvider>
     </html>
   );
 }

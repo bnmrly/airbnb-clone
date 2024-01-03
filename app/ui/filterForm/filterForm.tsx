@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
+import React, { useContext } from "react";
 import CloseIcon from "@material-ui/icons/Close";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import RemoveIcon from "@material-ui/icons/Remove";
@@ -9,6 +9,8 @@ import AddIcon from "@material-ui/icons/Add";
 import SearchIcon from "@material-ui/icons/Search";
 
 import styles from "./filterForm.module.css";
+
+import { StaysContext } from "../../context/index";
 
 interface Stay {
   city: string;
@@ -25,9 +27,12 @@ interface Stay {
 export const FilterForm = ({ staysData }: { staysData: Stay[] }) => {
   console.log("FilterForm --- staysData:", staysData);
 
+  const appContext = useContext(StaysContext);
+  console.log("FilterForm --- appContext:", appContext);
+
   // needs toggling
 
-  const filterDrawerVisible = false;
+  const filterDrawerVisible = true;
 
   const guestFilterVisible = true;
 
