@@ -31,13 +31,13 @@
   column-gap: 10px;
 }
 
-.image-container {
+.card-image-container {
   height: 269px;
   margin-bottom: 15px;
   border-radius: 15px;
 }
 
-.meta-container {
+.card-description-container {
   display: flex;
   align-items: center;
   min-height: 60px;
@@ -45,7 +45,7 @@
   flex-wrap: wrap;
 }
 
-.meta-superhost {
+.superhost {
   margin-right: 1rem;
   padding: 5px 10px;
   font-weight: bold;
@@ -55,8 +55,8 @@
   font-size: 0.65rem;
 }
 
-.meta-type,
-.meta-beds {
+.type,
+.beds {
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
@@ -64,11 +64,7 @@
   margin: 0;
 }
 
-.card__meta-beds {
-  margin-left: 1ch;
-}
-
-.meta-rating__container {
+.rating-container {
   display: flex;
   align-items: center;
   margin-left: auto;
@@ -78,12 +74,12 @@
   margin-right: 7px;
 }
 
-.meta-rating {
+.rating {
   color: #4f4f4f;
   margin: 0;
 }
 
-.meta-title {
+.title {
   margin: 0;
   flex-basis: 100%;
   font-size: 0.9rem;
