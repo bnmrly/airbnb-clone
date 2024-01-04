@@ -6,9 +6,10 @@ import React, { useState, useContext } from "react";
 import { Cards } from "./ui/cards/cards";
 import { SearchBar } from "./ui/searchBar/searchBar";
 import { FilterForm } from "./ui/filterForm/filterForm";
-// check this import - import Cards from "@/app/ui/dashboard/cards";
 
-import { StaysContext } from "./context/index";
+// look at import Cards from "@/app/ui/dashboard/cards";
+
+import { StaysContext } from "./context/StaysProvider";
 
 const Home = () => {
   const appContext = useContext(StaysContext);

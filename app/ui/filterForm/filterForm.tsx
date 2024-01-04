@@ -10,7 +10,7 @@ import SearchIcon from "@material-ui/icons/Search";
 
 import styles from "./filterForm.module.css";
 
-import { StaysContext } from "../../context/index";
+import { StaysContext } from "../../context/StaysProvider";
 
 interface Stay {
   city: string;
