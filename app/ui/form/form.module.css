@@ -185,6 +185,8 @@ this has this class on it too - need to add and tweak */
   box-shadow: 0 1px 6px rgb(0 0 0/10%);
   overflow: hidden;
   margin-bottom: 35px;
+  display: flex;
+  align-items: center;
 }
 
 .filter-input-container {
@@ -195,6 +197,7 @@ this has this class on it too - need to add and tweak */
   height: 55px;
   padding: 0 26px;
   border-bottom: 1px solid #f2f2f2;
+  flex: 1;
 }
 
 .filter-input {
@@ -221,8 +224,6 @@ this has this class on it too - need to add and tweak */
 
 
 .filter-button {
-  position: absolute;
-  bottom: 0;
   width: 126px;
   height: 48px;
   background-color: rgba(235, 87, 87, 0.9);
@@ -233,25 +234,22 @@ this has this class on it too - need to add and tweak */
   align-items: center;
   justify-content: center;
   border-width: inherit;
-  left: 50%;
-  transform: translateX(-50%);
+  margin-right: 26px;
 }
 
-/* check thsi class */
-@media (min-width: 578px) {
-  .filter-filter-drawer-form_submit-button {
-    position: static;
-    align-self: center;
+@media (max-width: 577px) {
+  .filter-button {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-right: 0;
   }
 }
 
 .filter-button-icon {
   margin-right: 5px;
 }
-
-/* .filter-drawer__filter {
-  font-family: "Mulish", sans-serif;
-} */
 
 .filter-location-container {
   font-family: "Mulish", sans-serif;

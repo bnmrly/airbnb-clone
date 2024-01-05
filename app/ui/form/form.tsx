@@ -211,20 +211,21 @@ export const Form = ({ staysData }: { staysData: Stay[] }) => {
                       value={adultGuestNumber}
                     />
                   </div>
+
+                  <button
+                    type="submit"
+                    className={styles["filter-button"]}
+                    // disabled={disabledSubmit}
+                    // onSubmit={() => {
+                    //   setFilterDrawerVisible(!filterDrawerVisible);
+                    //   handleSearchFormSubmit();
+                    // }}
+                  >
+                    <SearchIcon className={styles["filter-button-icon"]} />
+                    Search
+                  </button>
                 </div>
 
-                <button
-                  type="submit"
-                  className={styles["filter-button"]}
-                  // disabled={disabledSubmit}
-                  // onSubmit={() => {
-                  //   setFilterDrawerVisible(!filterDrawerVisible);
-                  //   handleSearchFormSubmit();
-                  // }}
-                >
-                  <SearchIcon className={styles["filter-button-icon"]} />
-                  Search
-                </button>
                 {/* </form> */}
                 <div className={styles["filter-guests-location-container"]}>
                   {locationFilterVisible && (
