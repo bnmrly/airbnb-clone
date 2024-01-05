@@ -164,22 +164,6 @@ this has this class on it too - need to add and tweak */
   color: #333333;
 }
 
-/* TODO: i've removed this style */
-/* .filter-form {
-  border-radius: 16px;
-  box-shadow: 0px 1px 6px rgb(0 0 0 / 10%);
-  overflow: hidden;
-  margin-bottom: 35px;
-} */
-
-@media (min-width: 578px) {
-  .filter-form {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 40% 40% auto;
-  }
-}
-
 .filter-inputs-container {
   border-radius: 16px;
   box-shadow: 0 1px 6px rgb(0 0 0/10%);
