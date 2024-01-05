@@ -1,16 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { fetchCardData } from "../lib/data";
 
 const StaysContext = React.createContext();
 
 const StaysProvider = async (props) => {
-  const myName = "Ben Marley";
   const { staysData } = await fetchCardData();
 
   return (
-    <StaysContext.Provider value={{ myName, staysData }}>
+    <StaysContext.Provider value={{ staysData }}>
       {props.children}
     </StaysContext.Provider>
   );

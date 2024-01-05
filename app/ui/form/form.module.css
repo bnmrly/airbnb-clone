@@ -1,0 +1,349 @@
+/* .form-container {
+  border: 5px solid yellow;
+} */
+
+.form-filters-visible-true  {
+  position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    background-color: white;
+}
+
+.searchBar-container {
+  display: flex;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto; 
+}
+
+.searchBar-container-filters-visible-false {
+  @media screen and (min-width: 576px) {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+  }
+}
+ 
+@media screen and (min-width: 576px) {
+  .searchBar-container {
+    margin-right: 0;
+  }
+}
+
+.searchBar-input-container {
+  border-radius: 16px;
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+  height: 55px;
+  display: flex;
+  /* prevents cutting off of border-radius */
+  overflow: hidden;
+  font-size: 0.9rem;
+  color: #333333;
+  box-sizing: content-box;
+}
+
+
+.searchBar-input {
+  font-family: "Mulish", sans-serif;
+  border-color: transparent;
+  outline: none;
+  height: 55px;
+  border: none;
+  padding: 0 16px;
+  border-right: 1px solid #f2f2f2;
+  color: #333333;
+  -webkit-font-smoothing: antialiased;
+}
+/* 
+this has this class on it too - need to add and tweak */
+
+.searchBar-input-location {
+  background-color: transparent;
+  /* hack for input type="text" */
+  /* max-width: 108px; */
+  max-width: 140px;
+}
+
+.searchBar-input-guests {
+  width: 108px;
+}
+
+.searchBar-guests-container {
+  font-family: "Mulish", sans-serif;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border-right: 1px solid #f2f2f2;
+}
+
+/* multiple classes are knackered */
+
+/* .guests-container--0-guests {
+  color: #bdbdbd;
+} */
+
+.searchBar-submit-button {
+  background-color: inherit;
+  height: 55px;
+  width: 55px;
+  border-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(235, 87, 87, 0.9);
+  cursor: pointer;
+}
+
+.searchBar-icon-container {
+  /* need to update config to be able to do below, see -  https://nextjs.org/docs/pages/building-your-application/configuring/post-css and https://github.com/vercel/next.js/issues/10475 */
+  width: 24px;
+  height: 24px;
+  /* svg {
+    color: rgba(235, 87, 87, 0.9);
+  }  */
+}
+
+/* add this above */
+.searchBar-submit-button:focus {
+  outline: none;
+}
+
+/* FilterForm Css */
+
+.filter-container {
+  /* position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 0;
+  background-color: white; */
+  padding: 20px 10px;
+  /* border: 5px solid red; */
+}
+
+/* @media screen and (min-width: 1200px) {
+  .filter-container {
+    padding: 40px 80px;
+  }
+} */
+
+.filter-inner-container {
+  position: relative;
+  /* keep submit button at bottom */
+  padding-bottom: 15vh;
+}
+
+@media screen and (min-width: 576px) {
+  .filter-inner-container{
+    padding-bottom: 0;
+  }
+}
+
+.filter-heading-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  align-items: center;
+}
+
+.filter-heading {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #333333;
+}
+
+.filter-close-button {
+  background-color: transparent;
+  border-color: transparent;
+  cursor: pointer;
+  border-width: 0;
+  margin: 0 0 -4px 0;
+  padding: 0;
+  color: #333333;
+}
+
+/* TODO: i've removed this style */
+/* .filter-form {
+  border-radius: 16px;
+  box-shadow: 0px 1px 6px rgb(0 0 0 / 10%);
+  overflow: hidden;
+  margin-bottom: 35px;
+} */
+
+@media (min-width: 578px) {
+  .filter-form {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 40% 40% auto;
+  }
+}
+
+.filter-inputs-container {
+  border-radius: 16px;
+  box-shadow: 0 1px 6px rgb(0 0 0/10%);
+  overflow: hidden;
+  margin-bottom: 35px;
+}
+
+.filter-input-container {
+  font-family: "Mulish", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 55px;
+  padding: 0 26px;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.filter-input {
+  border-color: transparent;
+  outline: none;
+  border: none;
+  padding: 0;
+  color: #333333;
+  font-size: 0.9rem;
+}
+
+.filter-label {
+  padding-bottom: 5px;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 0.6rem;
+  color: #333333;
+}
+
+
+.filter-guest-number-container-0 {
+  color: #bdbdbd;
+}
+
+
+.filter-button {
+  position: absolute;
+  bottom: 0;
+  width: 126px;
+  height: 48px;
+  background-color: rgba(235, 87, 87, 0.9);
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-width: inherit;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* check thsi class */
+@media (min-width: 578px) {
+  .filter-filter-drawer-form_submit-button {
+    position: static;
+    align-self: center;
+  }
+}
+
+.filter-button-icon {
+  margin-right: 5px;
+}
+
+/* .filter-drawer__filter {
+  font-family: "Mulish", sans-serif;
+} */
+
+.filter-location-container {
+  font-family: "Mulish", sans-serif;
+}
+
+.filter-guests-location-container {
+  min-height: 240px;
+}
+
+@media (min-width: 576px) {
+  .filter-guests-container {
+    display: grid;
+    grid-template-columns: 40% 60%;
+  }
+}
+
+/* @media (min-width: 576px) {
+  .filter-drawer__filter--guests {
+    grid-column-start: 2;
+    grid-column-end: -1;
+  }
+} */
+
+.filter-location-list {
+  list-style-type: none;
+  padding: 0 0 0 1rem;
+  margin: 0;
+}
+
+.filter-location-list-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 35px;
+  cursor: pointer;
+  font-family: "Mulish", sans-serif;
+  color: #4f4f4f;
+  font-size: 0.9rem;
+}
+
+.filter-location-list-item-icon {
+  padding-right: 8px;
+  font-size: 20px;
+}
+
+/* @media (min-width: 576px) {
+  .filter-drawer__filter--location {
+    grid-column-start: 1;
+    grid-column-end: 2;
+  }
+} */
+
+
+.filter-adults-guests-container {
+  margin-bottom: 50px;
+  padding: 0 16px;
+}
+
+.filter-guests-title {
+  font-weight: 800;
+  padding-bottom: 5px;
+  margin: 0;
+}
+
+.filter-guests-meta {
+  margin: 0 0 15px 0;
+  color: #bdbdbd;
+}
+
+.filter-guests-button-container {
+  display: flex;
+  align-items: center;
+}
+
+.filter-guest-button {
+  height: 23px;
+  width: 23px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #828282;
+  color: #828282;
+  border-radius: 4px;
+  background-color: transparent;
+  
+}
+
+.filter-guests-button-disabled-true {
+  color: #cccccc;
+  border: 1px solid #cccccc;
+}
+
+.filter-guest-number-value {
+  margin: 0 15px;
+}
+

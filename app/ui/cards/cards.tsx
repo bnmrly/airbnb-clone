@@ -19,9 +19,11 @@ export const Cards = ({ staysData }: { staysData: Stay[] }) => {
 
   // staysData conditon for the heading needs changing to searchResults
 
+  if (!staysData) return <p>No stays Data</p>;
+
   return (
     <>
-      {staysData.length > 0 && (
+      {staysData?.length && (
         <div className={styles["text-container"]}>
           <h1 className={styles["heading"]}>Stays in {staysData[0].country}</h1>
           <p className={styles["result-count"]}>
