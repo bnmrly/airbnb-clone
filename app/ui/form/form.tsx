@@ -8,7 +8,8 @@ import CloseIcon from "@material-ui/icons/Close";
 import RemoveIcon from "@material-ui/icons/Remove";
 import AddIcon from "@material-ui/icons/Add";
 
-interface Stay {
+// interface Stay {
+type Stay = {
   city: string;
   country: string;
   superHost: boolean;
@@ -18,15 +19,10 @@ interface Stay {
   type: string;
   beds: number;
   photo: string;
-}
-
-type HTMLElementEvent<T extends HTMLElement> = Event & {
-  target: T;
 };
 
 export const Form = ({ staysData }: { staysData: Stay[] }) => {
   const [filtersVisible, setFiltersVisible] = useState(false);
-  console.log("Form --- filtersVisible:", filtersVisible);
   const [locationFilterVisible, setLocationFilterVisible] = useState(false);
   const [guestFilterVisible, setGuestFilterVisible] = useState(false);
 
@@ -34,25 +30,22 @@ export const Form = ({ staysData }: { staysData: Stay[] }) => {
   const adultGuestNumber = 2;
   const totalGuestNumber = 0;
 
-  // this type ok?
-  // want to specify it should return a boolean
-
   const handleFilterVisibilityClick = (
-    event: HTMLElementEvent<HTMLInputElement>
+    event:
+      | React.MouseEvent<HTMLInputElement>
+      | React.MouseEvent<HTMLButtonElement>
   ) => {
-    console.log("onclick firing");
     setFiltersVisible((prevState) => !prevState);
-    if (event.target.id === "location") {
-      // setLocationFilterVisible((prevState) => !prevState);
+    const { id } = event.currentTarget;
+
+    if (id === "location") {
       setLocationFilterVisible(true);
       setGuestFilterVisible(false);
     }
 
-    if (event.target.id === "guests") {
-      console.log("gueststts");
-      // setLocationFilterVisible((prevState) => !prevState);
-      setLocationFilterVisible(false);
+    if (id === "guests") {
       setGuestFilterVisible(true);
+      setLocationFilterVisible(false);
     }
   };
 
@@ -76,8 +69,7 @@ export const Form = ({ staysData }: { staysData: Stay[] }) => {
                   placeholder="Helsinki, Finland"
                   // value={locationSearchOption}
                   value="Helsinki, Finland"
-                  // onClick={handleOpenLocationFilterChange}
-                  onClick={(e) => handleFilterVisibilityClick(e)}
+                  onClick={handleFilterVisibilityClick}
                 />
                 <input
                   className={`${styles["searchBar-input"]} ${styles["searchBar-input-guests"]}`}
@@ -94,8 +86,7 @@ export const Form = ({ staysData }: { staysData: Stay[] }) => {
                   value=""
                   // value={locationSearchOption}
                   // value="Add Guests"
-                  // onClick={handleOpenLocationFilterChange}
-                  onClick={(e) => handleFilterVisibilityClick(e)}
+                  onClick={handleFilterVisibilityClick}
                 />
                 <input
                   type="hidden"
@@ -141,7 +132,7 @@ export const Form = ({ staysData }: { staysData: Stay[] }) => {
 
                   <button
                     className={styles["filter-close-button"]}
-                    onClick={(e) => handleFilterVisibilityClick(e)}
+                    onClick={handleFilterVisibilityClick}
                     type="button"
                   >
                     <CloseIcon />
