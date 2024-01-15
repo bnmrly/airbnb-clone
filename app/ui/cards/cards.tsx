@@ -1,18 +1,8 @@
 import Image from "next/image";
 import React from "react";
-import styles from "./cards.module.css";
+import { Stay } from "../../lib/types";
 
-interface Stay {
-  city: string;
-  country: string;
-  superHost: boolean;
-  title: string;
-  rating: number;
-  maxGuests: number;
-  type: string;
-  beds: number;
-  photo: string;
-}
+import styles from "./cards.module.css";
 
 export const Cards = ({ staysData }: { staysData: Stay[] }) => {
   // Come back to this class and use an id as is just being used for the grid-template area

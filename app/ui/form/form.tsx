@@ -1,25 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
-import styles from "./form.module.css";
 import SearchIcon from "@material-ui/icons/Search";
 import CloseIcon from "@material-ui/icons/Close";
 // import LocationOnIcon from "@material-ui/icons/LocationOn";
 import RemoveIcon from "@material-ui/icons/Remove";
 import AddIcon from "@material-ui/icons/Add";
-
-// interface Stay {
-type Stay = {
-  city: string;
-  country: string;
-  superHost: boolean;
-  title: string;
-  rating: number;
-  maxGuests: number;
-  type: string;
-  beds: number;
-  photo: string;
-};
+import { Stay } from "../../lib/types";
+import styles from "./form.module.css";
 
 export const Form = ({ staysData }: { staysData: Stay[] }) => {
   const [filtersVisible, setFiltersVisible] = useState(false);
