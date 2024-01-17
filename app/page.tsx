@@ -1,18 +1,31 @@
 "use client";
-
+import React, { useState } from "react";
 import Image from "next/image";
-import styles from "./page.module.css";
-import React, { useState, useContext } from "react";
+import { useSearchResults } from "./hooks/useSearchResults";
 import { Cards } from "./ui/cards/cards";
 import { Form } from "./ui/form/form";
 
+import styles from "./page.module.css";
+
 // look at import Cards from "@/app/ui/dashboard/cards";
 
-import { StaysContext } from "./context/StaysProvider";
-
 const Home = () => {
-  const appContext = useContext(StaysContext);
-  const { staysData } = appContext;
+  const [staysData, searchResults, totalGuestNumber, setTotalGuestNumber] =
+    useSearchResults();
+  console.log("Home --- searchResults:", searchResults);
+
+  // fetch data on the server = good!
+
+  // filter the data in here or in a hook that is used here
+
+  // if it is in context, that would need to be fecthed on the client as i need to set search results according to the qwuery
+
+  // cards will receive filtered data and not staysData
+  // form will do the filtering
+
+  // type formProps = {
+  //   hookTotalGuestNumber: number;
+  // };
 
   return (
     // TODO: revisit this - header inside here
@@ -23,7 +36,10 @@ const Home = () => {
         </a>
       </header>
       <main>
-        <Form staysData={staysData} />
+        {/* <Form formProps={formProps} /> */}
+        {/* <Form totalGuestNumber={totalGuestNumber} /> */}
+
+        <Form />
         <Cards staysData={staysData} />
       </main>
     </div>
