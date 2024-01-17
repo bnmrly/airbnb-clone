@@ -6,9 +6,12 @@ import CloseIcon from "@material-ui/icons/Close";
 // import LocationOnIcon from "@material-ui/icons/LocationOn";
 import RemoveIcon from "@material-ui/icons/Remove";
 import AddIcon from "@material-ui/icons/Add";
+
 import styles from "./form.module.css";
 
-export const Form = () => {
+// clean up these props - don't add inline
+
+export const Form = ({ totalGuestNumber }: { totalGuestNumber: number }) => {
   const [filtersVisible, setFiltersVisible] = useState(false);
   const [locationFilterVisible, setLocationFilterVisible] = useState(false);
   const [guestFilterVisible, setGuestFilterVisible] = useState(false);
@@ -16,9 +19,6 @@ export const Form = () => {
   // local state - fine here
   const childGuestNumber = 5;
   const adultGuestNumber = 2;
-
-  // want this to come down from hook
-  const totalGuestNumber = 0;
 
   const handleFilterVisibilityClick = (
     event:

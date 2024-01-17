@@ -23,10 +23,6 @@ const Home = () => {
   // cards will receive filtered data and not staysData
   // form will do the filtering
 
-  // type formProps = {
-  //   hookTotalGuestNumber: number;
-  // };
-
   return (
     // TODO: revisit this - header inside here
     <div className={styles["app-container"]}>
@@ -36,10 +32,7 @@ const Home = () => {
         </a>
       </header>
       <main>
-        {/* <Form formProps={formProps} /> */}
-        {/* <Form totalGuestNumber={totalGuestNumber} /> */}
-
-        <Form />
+        <Form totalGuestNumber={totalGuestNumber} />
         <Cards staysData={staysData} />
       </main>
     </div>
