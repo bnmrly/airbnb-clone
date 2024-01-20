@@ -11,12 +11,18 @@ import styles from "./form.module.css";
 
 // clean up these props - don't add inline
 
-export const Form = ({ totalGuestNumber }: { totalGuestNumber: number }) => {
+type FormProps = {
+  totalGuestNumber: number;
+  setTotalGuestNumber: React.Dispatch<React.SetStateAction<number>>;
+};
+
+export const Form = (props: FormProps) => {
   const [filtersVisible, setFiltersVisible] = useState(false);
   const [locationFilterVisible, setLocationFilterVisible] = useState(false);
   const [guestFilterVisible, setGuestFilterVisible] = useState(false);
 
-  // local state - fine here
+  const { totalGuestNumber, setTotalGuestNumber } = props;
+
   const childGuestNumber = 5;
   const adultGuestNumber = 2;
 
@@ -37,6 +43,11 @@ export const Form = ({ totalGuestNumber }: { totalGuestNumber: number }) => {
       setGuestFilterVisible(true);
       setLocationFilterVisible(false);
     }
+  };
+
+  const handleAdultIncrementClick = () => {
+    console.log("handle click firing");
+    setTotalGuestNumber(8);
   };
 
   return (
@@ -255,8 +266,9 @@ export const Form = ({ totalGuestNumber }: { totalGuestNumber: number }) => {
                             {adultGuestNumber}
                           </p>
                           <button
+                            type="button"
                             className={styles["filter-guest-button"]}
-                            // onClick={incrementAdultGuestNumber}
+                            onClick={handleAdultIncrementClick}
                           >
                             <AddIcon />
                           </button>

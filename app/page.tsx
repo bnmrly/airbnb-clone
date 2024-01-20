@@ -32,7 +32,10 @@ const Home = () => {
         </a>
       </header>
       <main>
-        <Form totalGuestNumber={totalGuestNumber} />
+        <Form
+          totalGuestNumber={totalGuestNumber}
+          setTotalGuestNumber={setTotalGuestNumber}
+        />
         <Cards searchResults={searchResults} />
       </main>
     </div>
