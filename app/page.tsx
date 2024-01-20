@@ -33,7 +33,7 @@ const Home = () => {
       </header>
       <main>
         <Form totalGuestNumber={totalGuestNumber} />
-        <Cards staysData={staysData} />
+        <Cards searchResults={searchResults} />
       </main>
     </div>
   );

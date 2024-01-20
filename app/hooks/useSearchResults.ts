@@ -6,7 +6,7 @@ export const useSearchResults = () => {
   const appContext = useContext(StaysContext);
   const { staysData } = appContext;
   console.log("useSearchResults --- staysData:", staysData);
-  const [totalGuestNumber, setTotalGuestNumber] = useState(9);
+  const [totalGuestNumber, setTotalGuestNumber] = useState(6);
 
   // refactor so dont use state to set it - just read it from the url
 
