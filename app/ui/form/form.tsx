@@ -9,8 +9,6 @@ import AddIcon from "@material-ui/icons/Add";
 
 import styles from "./form.module.css";
 
-// clean up these props - don't add inline
-
 type FormProps = {
   totalGuestNumber: number;
   setTotalGuestNumber: React.Dispatch<React.SetStateAction<number>>;
