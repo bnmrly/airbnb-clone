@@ -10,18 +10,8 @@ import styles from "./page.module.css";
 // look at import Cards from "@/app/ui/dashboard/cards";
 
 const Home = () => {
-  const [staysData, searchResults, totalGuestNumber, setTotalGuestNumber] =
+  const [searchResults, totalGuestNumber, setTotalGuestNumber] =
     useSearchResults();
-  console.log("Home --- searchResults:", searchResults);
-
-  // fetch data on the server = good!
-
-  // filter the data in here or in a hook that is used here
-
-  // if it is in context, that would need to be fecthed on the client as i need to set search results according to the qwuery
-
-  // cards will receive filtered data and not staysData
-  // form will do the filtering
 
   return (
     // TODO: revisit this - header inside here

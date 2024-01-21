@@ -16,5 +16,5 @@ export const useSearchResults = () => {
     return stay.maxGuests >= totalGuestNumber;
   });
 
-  return [staysData, searchResults, totalGuestNumber, setTotalGuestNumber];
+  return [searchResults, totalGuestNumber, setTotalGuestNumber];
 };
