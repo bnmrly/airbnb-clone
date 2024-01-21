@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { fetchCardData } from "../lib/data";
+import { fetchCardData } from "@/app/lib/data";
 
 const StaysContext = React.createContext();
 

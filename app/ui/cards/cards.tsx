@@ -1,8 +1,8 @@
 import Image from "next/image";
 import React from "react";
-import { Stay } from "../../lib/types";
+import { Stay } from "@/app/lib/types";
 
-import styles from "./cards.module.css";
+import styles from "@/app/ui/cards/cards.module.css";
 
 export const Cards = ({ searchResults }: { searchResults: Stay[] }) => {
   // Come back to this class and use an id as is just being used for the grid-template area

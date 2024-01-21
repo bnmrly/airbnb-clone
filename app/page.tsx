@@ -1,13 +1,11 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import { useSearchResults } from "./hooks/useSearchResults";
-import { Cards } from "./ui/cards/cards";
-import { Form } from "./ui/form/form";
+import { useSearchResults } from "@/app/hooks/useSearchResults";
+import { Cards } from "@/app/ui/cards/cards";
+import { Form } from "@/app/ui/form/form";
 
-import styles from "./page.module.css";
-
-// look at import Cards from "@/app/ui/dashboard/cards";
+import styles from "@/app/page.module.css";
 
 const Home = () => {
   const [searchResults, totalGuestNumber, setTotalGuestNumber] =

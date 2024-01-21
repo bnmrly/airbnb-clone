@@ -1,11 +1,11 @@
 import { useState, useContext } from "react";
-import { StaysContext } from "../context/StaysProvider";
-import { Stay } from "../lib/types";
+import { StaysContext } from "@/app/context/staysProvider";
+import { Stay } from "@/app/lib/types";
 
 export const useSearchResults = () => {
   const appContext = useContext(StaysContext);
   const { staysData } = appContext;
-  console.log("useSearchResults --- staysData:", staysData);
+
   const [totalGuestNumber, setTotalGuestNumber] = useState<number>(6);
 
   // refactor so dont use state to set it - just read it from the url

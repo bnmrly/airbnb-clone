@@ -7,7 +7,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import RemoveIcon from "@material-ui/icons/Remove";
 import AddIcon from "@material-ui/icons/Add";
 
-import styles from "./form.module.css";
+import styles from "@/app/ui/form/form.module.css";
 
 type FormProps = {
   totalGuestNumber: number;

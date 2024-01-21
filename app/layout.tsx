@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat, Mulish } from "next/font/google";
 import "./globals.css";
-import { StaysProvider } from "./context/StaysProvider";
+import { StaysProvider } from "@/app/context/staysProvider";
 
 // come back to this - mulish and anti-aliasing
 
