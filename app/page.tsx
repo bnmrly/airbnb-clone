@@ -8,7 +8,7 @@ import { Form } from "@/app/ui/form/form";
 import styles from "@/app/page.module.css";
 
 const Home = () => {
-  const [searchResults, totalGuestNumber, setTotalGuestNumber] =
+  const { searchResults, totalGuestNumber, setTotalGuestNumber } =
     useSearchResults();
 
   return (
@@ -20,6 +20,8 @@ const Home = () => {
         </a>
       </header>
       <main>
+        {/* why was the type for totalGuestNumber const totalGuestNumber: number | React.Dispatch<React.SetStateAction<number>>  when I deconstructed it from an array */}
+
         <Form
           totalGuestNumber={totalGuestNumber}
           setTotalGuestNumber={setTotalGuestNumber}

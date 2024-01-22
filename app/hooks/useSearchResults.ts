@@ -1,9 +1,13 @@
+"use client";
 import { useState, useEffect } from "react";
 import { fetchCardData } from "@/app/lib/data";
 import { Stay } from "@/app/lib/types";
 
+// refactor so dont use state to set it - just read it from the url
+
 export const useSearchResults = () => {
   const [searchResults, setSearchResults] = useState<Stay[]>([]);
+
   const [totalGuestNumber, setTotalGuestNumber] = useState<number>(6);
 
   useEffect(() => {
@@ -22,5 +26,5 @@ export const useSearchResults = () => {
     }
   }, [totalGuestNumber]);
 
-  return [searchResults, totalGuestNumber, setTotalGuestNumber];
+  return { searchResults, totalGuestNumber, setTotalGuestNumber };
 };
