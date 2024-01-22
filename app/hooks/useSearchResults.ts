@@ -1,20 +1,26 @@
-import { useState, useContext } from "react";
-import { StaysContext } from "@/app/context/staysProvider";
+import { useState, useEffect } from "react";
+import { fetchCardData } from "@/app/lib/data";
 import { Stay } from "@/app/lib/types";
 
 export const useSearchResults = () => {
-  const appContext = useContext(StaysContext);
-  const { staysData } = appContext;
-
+  const [searchResults, setSearchResults] = useState<Stay[]>([]);
   const [totalGuestNumber, setTotalGuestNumber] = useState<number>(6);
 
-  // refactor so dont use state to set it - just read it from the url
-
-  // maybe do a check on length for staysdsata for defensive
-
-  const searchResults = staysData.filter((stay: Stay) => {
-    return stay.maxGuests >= totalGuestNumber;
-  });
+  useEffect(() => {
+    const getCardData = async () => await fetchCardData();
+    try {
+      getCardData().then((data) => {
+        setSearchResults(
+          data?.staysData.filter((stay: Stay) => {
+            return stay.maxGuests >= totalGuestNumber;
+          })
+        );
+      });
+    } catch (error) {
+      console.error("Error:", error);
+      throw new Error("Failed to fetch card data.");
+    }
+  }, [totalGuestNumber]);
 
   return [searchResults, totalGuestNumber, setTotalGuestNumber];
 };

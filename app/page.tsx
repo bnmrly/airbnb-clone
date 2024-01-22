@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import { useSearchResults } from "@/app/hooks/useSearchResults";
 import { Cards } from "@/app/ui/cards/cards";
