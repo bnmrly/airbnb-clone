@@ -6,23 +6,18 @@ import CloseIcon from "@material-ui/icons/Close";
 // import LocationOnIcon from "@material-ui/icons/LocationOn";
 import RemoveIcon from "@material-ui/icons/Remove";
 import AddIcon from "@material-ui/icons/Add";
+import Link from "next/link";
 
 import styles from "@/app/ui/form/form.module.css";
 
-type FormProps = {
-  totalGuestNumber: number;
-  setTotalGuestNumber: React.Dispatch<React.SetStateAction<number>>;
-};
-
-export const Form = (props: FormProps) => {
+export const Form = () => {
   const [filtersVisible, setFiltersVisible] = useState(false);
   const [locationFilterVisible, setLocationFilterVisible] = useState(false);
   const [guestFilterVisible, setGuestFilterVisible] = useState(false);
+  const [adultGuestNumber, setAdultGuestNumber] = useState(0);
+  const [childGuestNumber, setChildGuestNumber] = useState(0);
 
-  const { totalGuestNumber, setTotalGuestNumber } = props;
-
-  const childGuestNumber = 5;
-  const adultGuestNumber = 2;
+  const totalGuestNumber = childGuestNumber + adultGuestNumber;
 
   const handleFilterVisibilityClick = (
     event:
@@ -43,9 +38,26 @@ export const Form = (props: FormProps) => {
     }
   };
 
-  const handleAdultIncrementClick = () => {
-    console.log("handle click firing");
-    setTotalGuestNumber(8);
+  const handleIncrementGuestClick = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    const { id } = event.currentTarget;
+    if (id === "adultIncrement")
+      setAdultGuestNumber((prevState) => prevState + 1);
+
+    if (id === "childIncrement")
+      setChildGuestNumber((prevState) => prevState + 1);
+  };
+
+  const handleDecrementGuestClick = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    const { id } = event.currentTarget;
+    if (id === "adultDecrement")
+      setAdultGuestNumber((prevState) => prevState - 1);
+
+    if (id === "childDecrement")
+      setChildGuestNumber((prevState) => prevState - 1);
   };
 
   return (
@@ -76,7 +88,6 @@ export const Form = (props: FormProps) => {
                   readOnly
                   name="guests"
                   id="guests"
-                  // placeholder="Add Guests"
                   placeholder={
                     totalGuestNumber < 1
                       ? "Add Guests"
@@ -87,33 +98,15 @@ export const Form = (props: FormProps) => {
                   // value="Add Guests"
                   onClick={handleFilterVisibilityClick}
                 />
-                <input
-                  type="hidden"
-                  // ref={guestSearchInput}
-                  name="guests"
-                  readOnly
-                  value={totalGuestNumber}
-                />
-                <input
-                  type="hidden"
-                  // ref={guestSearchInput}
-                  name="children"
-                  readOnly
-                  value={childGuestNumber}
-                />
-                <input
-                  type="hidden"
-                  // ref={guestSearchInput}
-                  name="adults"
-                  readOnly
-                  value={adultGuestNumber}
-                />
+
                 <button
                   className={styles["searchBar-submit-button"]}
-                  type="submit"
+                  // type="submit"
+                  type="button"
                   // disabled={disabled}
                   disabled={true}
                 >
+                  SEARCH BUTTON
                   <div className={styles["searchBar-icon-container"]}>
                     <SearchIcon />
                   </div>
@@ -160,9 +153,7 @@ export const Form = (props: FormProps) => {
                       // onClick={handleOpenLocationFilterChange}
                     />
                   </div>
-
                   {/* come back to htmlfor */}
-
                   <div className={styles["filter-input-container"]}>
                     <label
                       // htmlFor="filterDrawerGuests"
@@ -183,25 +174,12 @@ export const Form = (props: FormProps) => {
                         ? "Add Guests"
                         : `${totalGuestNumber} guests`}
                     </div>
-                    <input
-                      type="hidden"
-                      readOnly
-                      name="guests"
-                      value={totalGuestNumber}
-                    />
-                    <input
-                      type="hidden"
-                      name="children"
-                      value={childGuestNumber}
-                    />
-                    <input
-                      type="hidden"
-                      readOnly
-                      name="adults"
-                      value={adultGuestNumber}
-                    />
                   </div>
-
+                  <Link
+                    href={`?guests=${totalGuestNumber}`}
+                    className={styles["filter-button"]}
+                  >
+                    {/* 
                   <button
                     type="submit"
                     className={styles["filter-button"]}
@@ -210,10 +188,11 @@ export const Form = (props: FormProps) => {
                     //   setFilterDrawerVisible(!filterDrawerVisible);
                     //   handleSearchFormSubmit();
                     // }}
-                  >
+                  > */}
                     <SearchIcon className={styles["filter-button-icon"]} />
                     Search
-                  </button>
+                    {/* </button> */}
+                  </Link>
                 </div>
 
                 {/* </form> */}
@@ -256,17 +235,22 @@ export const Form = (props: FormProps) => {
                                 }`
                               ]
                             }
-                            // onClick={decrementAdultGuestNumber}
+                            onClick={handleDecrementGuestClick}
+                            type="button"
+                            id="adultDecrement"
                           >
                             <RemoveIcon />
                           </button>
+
+                          {/* TODO: MAKE A LABEL */}
                           <p className={styles["filter-guest-number-value"]}>
                             {adultGuestNumber}
                           </p>
                           <button
                             type="button"
                             className={styles["filter-guest-button"]}
-                            onClick={handleAdultIncrementClick}
+                            onClick={handleIncrementGuestClick}
+                            id="adultIncrement"
                           >
                             <AddIcon />
                           </button>
@@ -291,7 +275,9 @@ export const Form = (props: FormProps) => {
                               ]
                             }
                             disabled={childGuestNumber < 1}
-                            // onClick={decrementChildGuestNumber}
+                            onClick={handleDecrementGuestClick}
+                            id="childDecrement"
+                            type="button"
                           >
                             <RemoveIcon />
                           </button>
@@ -300,7 +286,9 @@ export const Form = (props: FormProps) => {
                           </p>
                           <button
                             className={styles["filter-guest-button"]}
-                            // onClick={incrementChildGuestNumber}
+                            id="childIncrement"
+                            onClick={handleIncrementGuestClick}
+                            type="button"
                           >
                             <AddIcon />
                           </button>

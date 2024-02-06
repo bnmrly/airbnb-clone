@@ -8,35 +8,30 @@ import { useSearchParams } from "next/navigation";
 
 export const useSearchResults = () => {
   const [searchResults, setSearchResults] = useState<Stay[]>([]);
-
-  const [totalGuestNumber, setTotalGuestNumber] = useState(6);
-
   const searchParams = useSearchParams();
+  const guests = searchParams.get("guests")
+    ? Number(searchParams.get("guests"))
+    : 0;
 
-  const childGuestNumber = searchParams.get("child");
-  console.log("useSearchResults --- childGuestNumber:", childGuestNumber);
-
-  const adultGuestNumber = searchParams.get("adults");
-  console.log("useSearchResults --- adultGuestNumber:", adultGuestNumber);
-
-  const location = searchParams.get("location");
-  console.log("useSearchResults --- location:", location);
+  // const location = searchParams.get("location");
+  // console.log("useSearchResults --- location:", location);
 
   useEffect(() => {
     const getCardData = async () => await fetchCardData();
     try {
       getCardData().then((data) => {
-        setSearchResults(
-          data?.staysData.filter((stay: Stay) => {
-            return stay.maxGuests >= totalGuestNumber;
-          })
-        );
+        if (!guests) setSearchResults(data?.staysData);
+
+        if (guests)
+          setSearchResults(
+            data?.staysData.filter((stay: Stay) => stay.maxGuests >= guests)
+          );
       });
     } catch (error) {
       console.error("Error:", error);
       throw new Error("Failed to fetch card data.");
     }
-  }, [totalGuestNumber]);
+  }, [guests]);
 
-  return [searchResults, totalGuestNumber, setTotalGuestNumber] as const;
+  return [searchResults] as const;
 };

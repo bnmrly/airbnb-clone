@@ -8,8 +8,9 @@ import { Form } from "@/app/ui/form/form";
 import styles from "@/app/page.module.css";
 
 const Home = () => {
-  const [searchResults, totalGuestNumber, setTotalGuestNumber] =
-    useSearchResults();
+  // const [searchResults, totalGuestNumber, setTotalGuestNumber] =
+  //   useSearchResults();
+  const [searchResults] = useSearchResults();
 
   return (
     // TODO: revisit this - header inside here
@@ -20,12 +21,7 @@ const Home = () => {
         </a>
       </header>
       <main>
-        {/* why was the type for totalGuestNumber const totalGuestNumber: number | React.Dispatch<React.SetStateAction<number>>  when I deconstructed it from an array */}
-
-        <Form
-          totalGuestNumber={totalGuestNumber}
-          setTotalGuestNumber={setTotalGuestNumber}
-        />
+        <Form />
         <Cards searchResults={searchResults} />
       </main>
     </div>
