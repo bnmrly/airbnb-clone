@@ -8,8 +8,6 @@ import { Form } from "@/app/ui/form/form";
 import styles from "@/app/page.module.css";
 
 const Home = () => {
-  // const [searchResults, totalGuestNumber, setTotalGuestNumber] =
-  //   useSearchResults();
   const [searchResults] = useSearchResults();
 
   return (

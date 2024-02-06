@@ -23,6 +23,7 @@ export const Form = () => {
     event:
       | React.MouseEvent<HTMLInputElement>
       | React.MouseEvent<HTMLButtonElement>
+      | React.MouseEvent<HTMLDivElement>
   ) => {
     setFiltersVisible((prevState) => !prevState);
     const { id } = event.currentTarget;
@@ -36,6 +37,11 @@ export const Form = () => {
       setGuestFilterVisible(true);
       setLocationFilterVisible(false);
     }
+
+    // if (id === "linkWrapper") {
+
+    //   setFiltersVisible(false);
+    // }
   };
 
   const handleIncrementGuestClick = (
@@ -175,24 +181,15 @@ export const Form = () => {
                         : `${totalGuestNumber} guests`}
                     </div>
                   </div>
-                  <Link
-                    href={`?guests=${totalGuestNumber}`}
-                    className={styles["filter-button"]}
-                  >
-                    {/* 
-                  <button
-                    type="submit"
-                    className={styles["filter-button"]}
-                    // disabled={disabledSubmit}
-                    // onSubmit={() => {
-                    //   setFilterDrawerVisible(!filterDrawerVisible);
-                    //   handleSearchFormSubmit();
-                    // }}
-                  > */}
-                    <SearchIcon className={styles["filter-button-icon"]} />
-                    Search
-                    {/* </button> */}
-                  </Link>
+                  <div onClick={handleFilterVisibilityClick} id="linkWrapper">
+                    <Link
+                      href={`?guests=${totalGuestNumber}`}
+                      className={styles["filter-button"]}
+                    >
+                      <SearchIcon className={styles["filter-button-icon"]} />
+                      Search
+                    </Link>
+                  </div>
                 </div>
 
                 {/* </form> */}
