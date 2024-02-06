@@ -37,11 +37,6 @@ export const Form = () => {
       setGuestFilterVisible(true);
       setLocationFilterVisible(false);
     }
-
-    // if (id === "linkWrapper") {
-
-    //   setFiltersVisible(false);
-    // }
   };
 
   const handleIncrementGuestClick = (
