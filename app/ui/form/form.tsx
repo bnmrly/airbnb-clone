@@ -3,14 +3,19 @@
 import React, { useState, useContext } from "react";
 import SearchIcon from "@material-ui/icons/Search";
 import CloseIcon from "@material-ui/icons/Close";
-// import LocationOnIcon from "@material-ui/icons/LocationOn";
+import LocationOnIcon from "@material-ui/icons/LocationOn";
 import RemoveIcon from "@material-ui/icons/Remove";
 import AddIcon from "@material-ui/icons/Add";
 import Link from "next/link";
 
 import styles from "@/app/ui/form/form.module.css";
 
-export const Form = () => {
+type FormProps = {
+  locationOption: string;
+  uniqueLocations: string[];
+};
+
+export const Form = (props: FormProps) => {
   const [filtersVisible, setFiltersVisible] = useState(false);
   const [locationFilterVisible, setLocationFilterVisible] = useState(false);
   const [guestFilterVisible, setGuestFilterVisible] = useState(false);
@@ -19,21 +24,27 @@ export const Form = () => {
 
   const totalGuestNumber = childGuestNumber + adultGuestNumber;
 
-  const handleFilterVisibilityClick = (
+  const { locationOption, uniqueLocations } = props;
+
+  const handleFiltersVisibilityClick = (
     event:
       | React.MouseEvent<HTMLInputElement>
       | React.MouseEvent<HTMLButtonElement>
       | React.MouseEvent<HTMLDivElement>
   ) => {
-    setFiltersVisible((prevState) => !prevState);
     const { id } = event.currentTarget;
+    console.log("Form --- id:", id);
 
-    if (id === "location") {
+    if (id !== "filterLocation" && id !== "filterGuests") {
+      setFiltersVisible((prevState) => !prevState);
+    }
+
+    if (id === "searchLocation" || id === "filterLocation") {
       setLocationFilterVisible(true);
       setGuestFilterVisible(false);
     }
 
-    if (id === "guests") {
+    if (id === "searchGuests" || id === "filterGuests") {
       setGuestFilterVisible(true);
       setLocationFilterVisible(false);
     }
@@ -43,10 +54,10 @@ export const Form = () => {
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
     const { id } = event.currentTarget;
-    if (id === "adultIncrement")
+    if (id === "incrementAdult")
       setAdultGuestNumber((prevState) => prevState + 1);
 
-    if (id === "childIncrement")
+    if (id === "incrementChild")
       setChildGuestNumber((prevState) => prevState + 1);
   };
 
@@ -54,10 +65,10 @@ export const Form = () => {
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
     const { id } = event.currentTarget;
-    if (id === "adultDecrement")
+    if (id === "decrementAdult")
       setAdultGuestNumber((prevState) => prevState - 1);
 
-    if (id === "childDecrement")
+    if (id === "decrementChild")
       setChildGuestNumber((prevState) => prevState - 1);
   };
 
@@ -65,6 +76,7 @@ export const Form = () => {
     <>
       <div className={styles["form-container"]}>
         <form className={`${styles[`form-filters-visible-${filtersVisible}`]}`}>
+          {/* START TOP RIGHT FILTERS */}
           {!filtersVisible && (
             <div
               className={`${styles["searchBar-container"]} ${
@@ -77,29 +89,27 @@ export const Form = () => {
                   type="text"
                   readOnly
                   name="location"
-                  id="location"
-                  placeholder="Helsinki, Finland"
-                  // value={locationSearchOption}
-                  value="Helsinki, Finland"
-                  onClick={handleFilterVisibilityClick}
+                  id="searchLocation"
+                  placeholder={locationOption}
+                  onClick={handleFiltersVisibilityClick}
                 />
+
                 <input
                   className={`${styles["searchBar-input"]} ${styles["searchBar-input-guests"]}`}
                   type="text"
                   readOnly
                   name="guests"
-                  id="guests"
+                  id="searchGuests"
                   placeholder={
                     totalGuestNumber < 1
                       ? "Add Guests"
                       : `${totalGuestNumber} guests`
                   }
-                  value=""
+                  // value=""
                   // value={locationSearchOption}
                   // value="Add Guests"
-                  onClick={handleFilterVisibilityClick}
+                  onClick={handleFiltersVisibilityClick}
                 />
-
                 <button
                   className={styles["searchBar-submit-button"]}
                   // type="submit"
@@ -107,7 +117,6 @@ export const Form = () => {
                   // disabled={disabled}
                   disabled={true}
                 >
-                  SEARCH BUTTON
                   <div className={styles["searchBar-icon-container"]}>
                     <SearchIcon />
                   </div>
@@ -115,6 +124,7 @@ export const Form = () => {
               </div>
             </div>
           )}
+          {/* END TOP RIGHT FILTERS */}
 
           {filtersVisible && (
             <div className={styles["filter-container"]}>
@@ -125,7 +135,7 @@ export const Form = () => {
 
                   <button
                     className={styles["filter-close-button"]}
-                    onClick={handleFilterVisibilityClick}
+                    onClick={handleFiltersVisibilityClick}
                     type="button"
                   >
                     <CloseIcon />
@@ -146,16 +156,14 @@ export const Form = () => {
                       type="text"
                       name="location"
                       required
-                      // look at the id
-                      id="searchFilter"
-                      placeholder="Helsinki, Finland"
-                      // value={locationSearchOption}
+                      id="filterLocation"
+                      placeholder={locationOption}
                       readOnly
-                      // onClick={handleOpenLocationFilterChange}
+                      onClick={handleFiltersVisibilityClick}
                     />
                   </div>
-                  {/* come back to htmlfor */}
-                  <div className={styles["filter-input-container"]}>
+
+                  {/* <div className={styles["filter-input-container"]}>
                     <label
                       // htmlFor="filterDrawerGuests"
                       htmlFor="guests"
@@ -169,16 +177,49 @@ export const Form = () => {
                           `filter-guest-number-container-${totalGuestNumber}`
                         ]
                       }
-                      // onClick={handleOpenGuestFilterChange}
+                      onClick={handleFiltersVisibilityClick}
+                      id="barry"
                     >
                       {totalGuestNumber < 1
                         ? "Add Guests"
                         : `${totalGuestNumber} guests`}
                     </div>
+                  </div> */}
+                  <div className={styles["filter-input-container"]}>
+                    {/* come back to htmlfor */}
+                    <label
+                      // htmlFor="filterDrawerGuests"
+                      htmlFor="filterGuests"
+                      className={styles["filter-label"]}
+                    >
+                      Guests
+                    </label>
+                    <input
+                      // className={
+                      //   styles[
+                      //     `filter-guest-number-container-${totalGuestNumber}`
+                      //   ]
+                      // }
+                      className={styles["filter-input"]}
+                      type="text"
+                      name="location"
+                      required
+                      id="filterGuests"
+                      // placeholder={{totalGuestNumber < 1
+                      //   ? "Add Guests"
+                      //   : `${totalGuestNumber} guests`}}
+                      placeholder={
+                        totalGuestNumber < 1
+                          ? "Add Guests"
+                          : `${totalGuestNumber} guests`
+                      }
+                      readOnly
+                      onClick={handleFiltersVisibilityClick}
+                    />
                   </div>
-                  <div onClick={handleFilterVisibilityClick} id="linkWrapper">
+                  <div onClick={handleFiltersVisibilityClick} id="linkWrapper">
                     <Link
-                      href={`?guests=${totalGuestNumber}`}
+                      href={`?location=${locationOption}&guests=${totalGuestNumber}&showResults=true`}
                       className={styles["filter-button"]}
                     >
                       <SearchIcon className={styles["filter-button-icon"]} />
@@ -192,19 +233,23 @@ export const Form = () => {
                   {locationFilterVisible && (
                     <div className={styles["filter-location-container"]}>
                       <ul className={styles["filter-location-list"]}>
-                        <li className={styles["filter-location-list-item"]}>
-                          this will be a city
-                        </li>
-                        {/* {uniqueLocations.map((city) => (
-                      <li
-                        className={styles["location-list-item"]}
-                        key={uniqid()}
-                        onClick={handlelocationSearchChange}
-                      >
-                        <LocationOnIcon className={styles["location-list-item-icon"]} />
-                        {city}
-                      </li>
-                    ))} */}
+                        {uniqueLocations.map((city) => {
+                          return (
+                            <li
+                              className={styles["location-list-item"]}
+                              key={city}
+                            >
+                              <Link
+                                href={`?location=${city}&guests=${totalGuestNumber}`}
+                              >
+                                <LocationOnIcon
+                                  className={styles["location-list-item-icon"]}
+                                />
+                              </Link>
+                              {city}
+                            </li>
+                          );
+                        })}
                       </ul>
                     </div>
                   )}
@@ -229,7 +274,7 @@ export const Form = () => {
                             }
                             onClick={handleDecrementGuestClick}
                             type="button"
-                            id="adultDecrement"
+                            id="decrementAdult"
                           >
                             <RemoveIcon />
                           </button>
@@ -242,7 +287,7 @@ export const Form = () => {
                             type="button"
                             className={styles["filter-guest-button"]}
                             onClick={handleIncrementGuestClick}
-                            id="adultIncrement"
+                            id="incrementAdult"
                           >
                             <AddIcon />
                           </button>
@@ -268,7 +313,7 @@ export const Form = () => {
                             }
                             disabled={childGuestNumber < 1}
                             onClick={handleDecrementGuestClick}
-                            id="childDecrement"
+                            id="decrementChild"
                             type="button"
                           >
                             <RemoveIcon />
@@ -278,7 +323,7 @@ export const Form = () => {
                           </p>
                           <button
                             className={styles["filter-guest-button"]}
-                            id="childIncrement"
+                            id="incrementChild"
                             onClick={handleIncrementGuestClick}
                             type="button"
                           >

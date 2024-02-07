@@ -8,8 +8,8 @@ export const Cards = ({ searchResults }: { searchResults: Stay[] }) => {
   // Come back to this class and use an id as is just being used for the grid-template area
 
   // searchResults conditon for the heading needs changing to searchResults
-
-  if (!searchResults) return <p>No stays Data</p>;
+  // add suspsense fallback in page
+  if (searchResults?.length == 0) return <p>No stays Data</p>;
 
   return (
     <>

@@ -3,35 +3,59 @@ import { useState, useEffect } from "react";
 import { fetchCardData } from "@/app/lib/data";
 import { Stay } from "@/app/lib/types";
 import { useSearchParams } from "next/navigation";
-
-// refactor so dont use state to set it - just read it from the url
+import { extractCityFromQueryParam } from "@/app/utilities/extractCityFromQueryParam";
 
 export const useSearchResults = () => {
   const [searchResults, setSearchResults] = useState<Stay[]>([]);
+  const [uniqueLocations, setUniqueLocations] = useState<string[]>([]);
   const searchParams = useSearchParams();
   const guests = searchParams.get("guests")
     ? Number(searchParams.get("guests"))
     : 0;
 
-  // const location = searchParams.get("location");
-  // console.log("useSearchResults --- location:", location);
+  const locationOption = searchParams.get("location") || uniqueLocations[0];
+
+  const showResults = searchParams.get("showResults") || "";
 
   useEffect(() => {
+    // TODO: FIX DEP ARRAY AS THIS IS FIRING THREE TIMES
+    console.log("useEffect firing");
     const getCardData = async () => await fetchCardData();
     try {
       getCardData().then((data) => {
+        const cities = [
+          ...new Set(
+            data?.staysData.map((stay: Stay) => `${stay.city}-${stay.country}`)
+          ),
+        ];
+
+        // if (typeof cities === "array")
+
+        // if (Array.isArray(cities)) {
+        //   console.log("inside cities condition");
+        //   setUniqueLocations(cities);
+        // }
+
+        setUniqueLocations(cities);
+
         if (!guests) setSearchResults(data?.staysData);
 
-        if (guests)
-          setSearchResults(
-            data?.staysData.filter((stay: Stay) => stay.maxGuests >= guests)
+        if (guests && showResults) {
+          const cityFromQuery = extractCityFromQueryParam(locationOption);
+
+          const filteredResults = data.staysData.filter(
+            (stay: Stay) =>
+              stay.city.includes(cityFromQuery) && stay.maxGuests >= guests
           );
+
+          setSearchResults(filteredResults);
+        }
       });
     } catch (error) {
       console.error("Error:", error);
       throw new Error("Failed to fetch card data.");
     }
-  }, [guests]);
+  }, [guests, locationOption, showResults]);
 
-  return [searchResults] as const;
+  return [searchResults, locationOption, uniqueLocations] as const;
 };

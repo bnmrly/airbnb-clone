@@ -8,7 +8,7 @@ import { Form } from "@/app/ui/form/form";
 import styles from "@/app/page.module.css";
 
 const Home = () => {
-  const [searchResults] = useSearchResults();
+  const [searchResults, locationOption, uniqueLocations] = useSearchResults();
 
   return (
     // TODO: revisit this - header inside here
@@ -19,7 +19,13 @@ const Home = () => {
         </a>
       </header>
       <main>
-        <Form />
+        {/* TODO: ADD SUSPENSE FALLBACK */}
+        <Form
+          locationOption={locationOption}
+          uniqueLocations={uniqueLocations}
+        />
+        {/* {searchResults?.length > 0 && <Cards searchResults={searchResults} />} */}
+
         <Cards searchResults={searchResults} />
       </main>
     </div>
