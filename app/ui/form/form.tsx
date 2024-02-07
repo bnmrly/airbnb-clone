@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import SearchIcon from "@material-ui/icons/Search";
 import CloseIcon from "@material-ui/icons/Close";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
@@ -76,7 +76,6 @@ export const Form = (props: FormProps) => {
     <>
       <div className={styles["form-container"]}>
         <form className={`${styles[`form-filters-visible-${filtersVisible}`]}`}>
-          {/* START TOP RIGHT FILTERS */}
           {!filtersVisible && (
             <div
               className={`${styles["searchBar-container"]} ${
@@ -85,37 +84,32 @@ export const Form = (props: FormProps) => {
             >
               <div className={styles["searchBar-input-container"]}>
                 <input
-                  className={`${styles["searchBar-input"]} ${styles["searchBar-input-location"]}`}
                   type="text"
                   readOnly
-                  name="location"
+                  name="searchLocation"
                   id="searchLocation"
                   placeholder={locationOption}
+                  className={`${styles["searchBar-input"]} ${styles["searchBar-input-location"]}`}
                   onClick={handleFiltersVisibilityClick}
                 />
 
                 <input
-                  className={`${styles["searchBar-input"]} ${styles["searchBar-input-guests"]}`}
                   type="text"
                   readOnly
-                  name="guests"
+                  name="searchGuests"
                   id="searchGuests"
                   placeholder={
                     totalGuestNumber < 1
                       ? "Add Guests"
                       : `${totalGuestNumber} guests`
                   }
-                  // value=""
-                  // value={locationSearchOption}
-                  // value="Add Guests"
+                  className={`${styles["searchBar-input"]} ${styles["searchBar-input-guests"]}`}
                   onClick={handleFiltersVisibilityClick}
                 />
                 <button
-                  className={styles["searchBar-submit-button"]}
-                  // type="submit"
                   type="button"
-                  // disabled={disabled}
                   disabled={true}
+                  className={styles["searchBar-submit-button"]}
                 >
                   <div className={styles["searchBar-icon-container"]}>
                     <SearchIcon />
@@ -124,19 +118,16 @@ export const Form = (props: FormProps) => {
               </div>
             </div>
           )}
-          {/* END TOP RIGHT FILTERS */}
-
           {filtersVisible && (
             <div className={styles["filter-container"]}>
               <div className={styles["filter-inner-container"]}>
                 <div className={styles["filter-heading-container"]}>
-                  {/* change this from a p tag */}
-                  <p className={styles["filter-heading"]}>Edit your search</p>
-
+                  <h2 className={styles["filter-heading"]}>Edit your search</h2>
                   <button
+                    type="button"
+                    id="closeButton"
                     className={styles["filter-close-button"]}
                     onClick={handleFiltersVisibilityClick}
-                    type="button"
                   >
                     <CloseIcon />
                   </button>
@@ -145,8 +136,7 @@ export const Form = (props: FormProps) => {
                 <div className={styles["filter-inputs-container"]}>
                   <div className={styles["filter-input-container"]}>
                     <label
-                      // htmlFor="filterDrawerLocation"
-                      htmlFor="filter-location"
+                      htmlFor="filterLocation"
                       className={styles["filter-label"]}
                     >
                       Location
@@ -154,7 +144,7 @@ export const Form = (props: FormProps) => {
                     <input
                       className={styles["filter-input"]}
                       type="text"
-                      name="location"
+                      name="filterLocation"
                       required
                       id="filterLocation"
                       placeholder={locationOption}
@@ -162,58 +152,29 @@ export const Form = (props: FormProps) => {
                       onClick={handleFiltersVisibilityClick}
                     />
                   </div>
-
-                  {/* <div className={styles["filter-input-container"]}>
-                    <label
-                      // htmlFor="filterDrawerGuests"
-                      htmlFor="guests"
-                      className={styles["filter-label"]}
-                    >
-                      Guests
-                    </label>
-                    <div
-                      className={
-                        styles[
-                          `filter-guest-number-container-${totalGuestNumber}`
-                        ]
-                      }
-                      onClick={handleFiltersVisibilityClick}
-                      id="barry"
-                    >
-                      {totalGuestNumber < 1
-                        ? "Add Guests"
-                        : `${totalGuestNumber} guests`}
-                    </div>
-                  </div> */}
                   <div className={styles["filter-input-container"]}>
-                    {/* come back to htmlfor */}
                     <label
-                      // htmlFor="filterDrawerGuests"
                       htmlFor="filterGuests"
                       className={styles["filter-label"]}
                     >
                       Guests
                     </label>
                     <input
-                      // className={
-                      //   styles[
-                      //     `filter-guest-number-container-${totalGuestNumber}`
-                      //   ]
-                      // }
-                      className={styles["filter-input"]}
                       type="text"
-                      name="location"
-                      required
+                      name="filterGuests"
                       id="filterGuests"
-                      // placeholder={{totalGuestNumber < 1
-                      //   ? "Add Guests"
-                      //   : `${totalGuestNumber} guests`}}
                       placeholder={
                         totalGuestNumber < 1
                           ? "Add Guests"
                           : `${totalGuestNumber} guests`
                       }
                       readOnly
+                      // className={
+                      //   styles[
+                      //     `filter-guest-number-container-${totalGuestNumber}`
+                      //   ]
+                      // }
+                      className={styles["filter-input"]}
                       onClick={handleFiltersVisibilityClick}
                     />
                   </div>
@@ -264,6 +225,8 @@ export const Form = (props: FormProps) => {
                           className={styles["filter-guests-button-container"]}
                         >
                           <button
+                            type="button"
+                            id="decrementAdult"
                             disabled={adultGuestNumber < 1}
                             className={
                               styles[
@@ -273,21 +236,19 @@ export const Form = (props: FormProps) => {
                               ]
                             }
                             onClick={handleDecrementGuestClick}
-                            type="button"
-                            id="decrementAdult"
                           >
                             <RemoveIcon />
                           </button>
 
-                          {/* TODO: MAKE A LABEL */}
+                          {/* TODO: MAKE A LABEL - improve semantic html here*/}
                           <p className={styles["filter-guest-number-value"]}>
                             {adultGuestNumber}
                           </p>
                           <button
                             type="button"
+                            id="incrementAdult"
                             className={styles["filter-guest-button"]}
                             onClick={handleIncrementGuestClick}
-                            id="incrementAdult"
                           >
                             <AddIcon />
                           </button>
@@ -304,6 +265,9 @@ export const Form = (props: FormProps) => {
                           className={styles["filter-guests-button-container"]}
                         >
                           <button
+                            type="button"
+                            id="decrementChild"
+                            disabled={childGuestNumber < 1}
                             className={
                               styles[
                                 `filter-guests-button--disabled-${
@@ -311,10 +275,7 @@ export const Form = (props: FormProps) => {
                                 }`
                               ]
                             }
-                            disabled={childGuestNumber < 1}
                             onClick={handleDecrementGuestClick}
-                            id="decrementChild"
-                            type="button"
                           >
                             <RemoveIcon />
                           </button>
@@ -322,10 +283,10 @@ export const Form = (props: FormProps) => {
                             {childGuestNumber}
                           </p>
                           <button
-                            className={styles["filter-guest-button"]}
-                            id="incrementChild"
-                            onClick={handleIncrementGuestClick}
                             type="button"
+                            id="incrementChild"
+                            className={styles["filter-guest-button"]}
+                            onClick={handleIncrementGuestClick}
                           >
                             <AddIcon />
                           </button>
