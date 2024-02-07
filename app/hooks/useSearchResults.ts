@@ -21,22 +21,16 @@ export const useSearchResults = () => {
     // TODO: FIX DEP ARRAY AS THIS IS FIRING THREE TIMES
     console.log("useEffect firing");
     const getCardData = async () => await fetchCardData();
+
     try {
       getCardData().then((data) => {
-        const cities = [
-          ...new Set(
-            data?.staysData.map((stay: Stay) => `${stay.city}-${stay.country}`)
-          ),
-        ];
+        const allCities: string[] = data?.staysData.map(
+          (stay: Stay) => `${stay.city}-${stay.country}`
+        );
 
-        // if (typeof cities === "array")
+        const uniqueCities = [...new Set(allCities)];
 
-        // if (Array.isArray(cities)) {
-        //   console.log("inside cities condition");
-        //   setUniqueLocations(cities);
-        // }
-
-        setUniqueLocations(cities);
+        setUniqueLocations(uniqueCities);
 
         if (!guests) setSearchResults(data?.staysData);
 
