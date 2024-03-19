@@ -33,7 +33,6 @@ export const Form = (props: FormProps) => {
       | React.MouseEvent<HTMLDivElement>
   ) => {
     const { id } = event.currentTarget;
-    console.log("Form --- id:", id);
 
     if (id !== "filterLocation" && id !== "filterGuests") {
       setFiltersVisible((prevState) => !prevState);
@@ -169,16 +168,15 @@ export const Form = (props: FormProps) => {
                           : `${totalGuestNumber} guests`
                       }
                       readOnly
-                      // className={
-                      //   styles[
-                      //     `filter-guest-number-container-${totalGuestNumber}`
-                      //   ]
-                      // }
                       className={styles["filter-input"]}
                       onClick={handleFiltersVisibilityClick}
                     />
                   </div>
-                  <div onClick={handleFiltersVisibilityClick} id="linkWrapper">
+                  <div
+                    onClick={handleFiltersVisibilityClick}
+                    id="linkWrapper"
+                    className={styles["filter-search-container"]}
+                  >
                     <Link
                       href={`?location=${locationOption}&guests=${totalGuestNumber}&showResults=true`}
                       className={styles["filter-button"]}
