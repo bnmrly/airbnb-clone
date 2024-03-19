@@ -73,231 +73,221 @@ export const Form = (props: FormProps) => {
 
   return (
     <>
-      <div className={styles["form-container"]}>
-        <form className={`${styles[`form-filters-visible-${filtersVisible}`]}`}>
-          {!filtersVisible && (
-            <div
-              className={`${styles["searchBar-container"]} ${
-                styles[`searchBar-container-filters-visible-${filtersVisible}`]
-              }`}
-            >
-              <div className={styles["searchBar-input-container"]}>
-                <input
-                  type="text"
-                  readOnly
-                  name="searchLocation"
-                  id="searchLocation"
-                  placeholder={locationOption}
-                  className={`${styles["searchBar-input"]} ${styles["searchBar-input-location"]}`}
-                  onClick={handleFiltersVisibilityClick}
-                />
+      <form className={`${styles[`form-filters-visible-${filtersVisible}`]}`}>
+        {!filtersVisible && (
+          <div
+            className={`${styles["searchBar-container"]} ${
+              styles[`searchBar-container-filters-visible-${filtersVisible}`]
+            }`}
+          >
+            <div className={styles["searchBar-input-container"]}>
+              <input
+                type="text"
+                readOnly
+                name="searchLocation"
+                id="searchLocation"
+                placeholder={locationOption}
+                className={`${styles["searchBar-input"]} ${styles["searchBar-input-location"]}`}
+                onClick={handleFiltersVisibilityClick}
+              />
 
-                <input
-                  type="text"
-                  readOnly
-                  name="searchGuests"
-                  id="searchGuests"
-                  placeholder={
-                    totalGuestNumber < 1
-                      ? "Add Guests"
-                      : `${totalGuestNumber} guests`
-                  }
-                  className={`${styles["searchBar-input"]} ${styles["searchBar-input-guests"]}`}
-                  onClick={handleFiltersVisibilityClick}
-                />
+              <input
+                type="text"
+                readOnly
+                name="searchGuests"
+                id="searchGuests"
+                placeholder={
+                  totalGuestNumber < 1
+                    ? "Add Guests"
+                    : `${totalGuestNumber} guests`
+                }
+                className={`${styles["searchBar-input"]} ${styles["searchBar-input-guests"]}`}
+                onClick={handleFiltersVisibilityClick}
+              />
+              <button
+                type="button"
+                disabled={true}
+                className={styles["searchBar-submit-button"]}
+              >
+                <div className={styles["searchBar-icon-container"]}>
+                  <SearchIcon />
+                </div>
+              </button>
+            </div>
+          </div>
+        )}
+        {filtersVisible && (
+          <div className={styles["filter-container"]}>
+            <div className={styles["filter-inner-container"]}>
+              <div className={styles["filter-heading-container"]}>
+                <h2 className={styles["filter-heading"]}>Edit your search</h2>
                 <button
                   type="button"
-                  disabled={true}
-                  className={styles["searchBar-submit-button"]}
+                  id="closeButton"
+                  className={styles["filter-close-button"]}
+                  onClick={handleFiltersVisibilityClick}
                 >
-                  <div className={styles["searchBar-icon-container"]}>
-                    <SearchIcon />
-                  </div>
+                  <CloseIcon />
                 </button>
               </div>
-            </div>
-          )}
-          {filtersVisible && (
-            <div className={styles["filter-container"]}>
-              <div className={styles["filter-inner-container"]}>
-                <div className={styles["filter-heading-container"]}>
-                  <h2 className={styles["filter-heading"]}>Edit your search</h2>
-                  <button
-                    type="button"
-                    id="closeButton"
-                    className={styles["filter-close-button"]}
-                    onClick={handleFiltersVisibilityClick}
+
+              <div className={styles["filter-inputs-container"]}>
+                <div className={styles["filter-input-container"]}>
+                  <label
+                    htmlFor="filterLocation"
+                    className={styles["filter-label"]}
                   >
-                    <CloseIcon />
-                  </button>
-                </div>
-
-                <div className={styles["filter-inputs-container"]}>
-                  <div className={styles["filter-input-container"]}>
-                    <label
-                      htmlFor="filterLocation"
-                      className={styles["filter-label"]}
-                    >
-                      Location
-                    </label>
-                    <input
-                      className={styles["filter-input"]}
-                      type="text"
-                      name="filterLocation"
-                      required
-                      id="filterLocation"
-                      placeholder={locationOption}
-                      readOnly
-                      onClick={handleFiltersVisibilityClick}
-                    />
-                  </div>
-                  <div className={styles["filter-input-container"]}>
-                    <label
-                      htmlFor="filterGuests"
-                      className={styles["filter-label"]}
-                    >
-                      Guests
-                    </label>
-                    <input
-                      type="text"
-                      name="filterGuests"
-                      id="filterGuests"
-                      placeholder={
-                        totalGuestNumber < 1
-                          ? "Add Guests"
-                          : `${totalGuestNumber} guests`
-                      }
-                      readOnly
-                      className={styles["filter-input"]}
-                      onClick={handleFiltersVisibilityClick}
-                    />
-                  </div>
-                  <div
+                    Location
+                  </label>
+                  <input
+                    className={styles["filter-input"]}
+                    type="text"
+                    name="filterLocation"
+                    required
+                    id="filterLocation"
+                    placeholder={locationOption}
+                    readOnly
                     onClick={handleFiltersVisibilityClick}
-                    id="linkWrapper"
-                    className={styles["filter-search-container"]}
-                  >
-                    <Link
-                      href={`?location=${locationOption}&guests=${totalGuestNumber}&showResults=true`}
-                      className={styles["filter-button"]}
-                    >
-                      <SearchIcon className={styles["filter-button-icon"]} />
-                      Search
-                    </Link>
-                  </div>
+                  />
                 </div>
-
-                <div className={styles["filter-guests-location-container"]}>
-                  {locationFilterVisible && (
-                    <div className={styles["filter-location-container"]}>
-                      <ul className={styles["filter-location-list"]}>
-                        {uniqueLocations.map((city) => {
-                          return (
-                            <li
-                              className={styles["location-list-item"]}
-                              key={city}
-                            >
-                              <Link
-                                href={`?location=${city}&guests=${totalGuestNumber}`}
-                                className={styles["location-list-item-link"]}
-                              >
-                                <LocationOnIcon
-                                  className={styles["location-list-item-icon"]}
-                                />
-                                {city}
-                              </Link>
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    </div>
-                  )}
-                  {guestFilterVisible && (
-                    <div className={styles["filter-guests-container"]}>
-                      <div className={styles["filter-adults-guests-container"]}>
-                        <p className={styles["filter-guests-title"]}>Adults</p>
-                        <p className={styles["filter-guests-meta"]}>
-                          Ages 13 or above{" "}
-                        </p>
-                        <div
-                          className={styles["filter-guests-button-container"]}
-                        >
-                          <button
-                            type="button"
-                            id="decrementAdult"
-                            disabled={adultGuestNumber < 1}
-                            className={`${
-                              styles[
-                                `filter-guest-button-disabled-${
-                                  adultGuestNumber < 1
-                                }`
-                              ]
-                            } ${styles["filter-guest-button"]}`}
-                            onClick={handleDecrementGuestClick}
-                          >
-                            <RemoveIcon />
-                          </button>
-
-                          {/* TODO: MAKE A LABEL - improve semantic html here*/}
-                          <p className={styles["filter-guest-number-value"]}>
-                            {adultGuestNumber}
-                          </p>
-                          <button
-                            type="button"
-                            id="incrementAdult"
-                            className={styles["filter-guest-button"]}
-                            onClick={handleIncrementGuestClick}
-                          >
-                            <AddIcon />
-                          </button>
-                        </div>
-                      </div>
-                      <div className={styles["filter-child-guests-container"]}>
-                        <p className={styles["filter-guests-title"]}>
-                          Children
-                        </p>
-                        <p className={styles["filter-guests-meta"]}>
-                          Ages 2-12
-                        </p>
-                        <div
-                          className={styles["filter-guests-button-container"]}
-                        >
-                          <button
-                            type="button"
-                            id="decrementChild"
-                            disabled={childGuestNumber < 1}
-                            className={`${
-                              styles[
-                                `filter-guest-button-disabled-${
-                                  childGuestNumber < 1
-                                }`
-                              ]
-                            } ${styles["filter-guest-button"]}`}
-                            onClick={handleDecrementGuestClick}
-                          >
-                            <RemoveIcon />
-                          </button>
-                          <p className={styles["filter-guest-number-value"]}>
-                            {childGuestNumber}
-                          </p>
-                          <button
-                            type="button"
-                            id="incrementChild"
-                            className={styles["filter-guest-button"]}
-                            onClick={handleIncrementGuestClick}
-                          >
-                            <AddIcon />
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  )}
+                <div className={styles["filter-input-container"]}>
+                  <label
+                    htmlFor="filterGuests"
+                    className={styles["filter-label"]}
+                  >
+                    Guests
+                  </label>
+                  <input
+                    type="text"
+                    name="filterGuests"
+                    id="filterGuests"
+                    placeholder={
+                      totalGuestNumber < 1
+                        ? "Add Guests"
+                        : `${totalGuestNumber} guests`
+                    }
+                    readOnly
+                    className={styles["filter-input"]}
+                    onClick={handleFiltersVisibilityClick}
+                  />
+                </div>
+                <div
+                  onClick={handleFiltersVisibilityClick}
+                  id="linkWrapper"
+                  className={styles["filter-search-container"]}
+                >
+                  <Link
+                    href={`?location=${locationOption}&guests=${totalGuestNumber}&showResults=true`}
+                    className={styles["filter-button"]}
+                  >
+                    <SearchIcon className={styles["filter-button-icon"]} />
+                    Search
+                  </Link>
                 </div>
               </div>
+
+              <div className={styles["filter-guests-location-container"]}>
+                {locationFilterVisible && (
+                  <div className={styles["filter-location-container"]}>
+                    <ul className={styles["filter-location-list"]}>
+                      {uniqueLocations.map((city) => {
+                        return (
+                          <li
+                            className={styles["location-list-item"]}
+                            key={city}
+                          >
+                            <Link
+                              href={`?location=${city}&guests=${totalGuestNumber}`}
+                              className={styles["location-list-item-link"]}
+                            >
+                              <LocationOnIcon
+                                className={styles["location-list-item-icon"]}
+                              />
+                              {city}
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                )}
+                {guestFilterVisible && (
+                  <div className={styles["filter-guests-container"]}>
+                    <div className={styles["filter-adults-guests-container"]}>
+                      <p className={styles["filter-guests-title"]}>Adults</p>
+                      <p className={styles["filter-guests-meta"]}>
+                        Ages 13 or above{" "}
+                      </p>
+                      <div className={styles["filter-guests-button-container"]}>
+                        <button
+                          type="button"
+                          id="decrementAdult"
+                          disabled={adultGuestNumber < 1}
+                          className={`${
+                            styles[
+                              `filter-guest-button-disabled-${
+                                adultGuestNumber < 1
+                              }`
+                            ]
+                          } ${styles["filter-guest-button"]}`}
+                          onClick={handleDecrementGuestClick}
+                        >
+                          <RemoveIcon />
+                        </button>
+
+                        {/* TODO: MAKE A LABEL - improve semantic html here*/}
+                        <p className={styles["filter-guest-number-value"]}>
+                          {adultGuestNumber}
+                        </p>
+                        <button
+                          type="button"
+                          id="incrementAdult"
+                          className={styles["filter-guest-button"]}
+                          onClick={handleIncrementGuestClick}
+                        >
+                          <AddIcon />
+                        </button>
+                      </div>
+                    </div>
+                    <div className={styles["filter-child-guests-container"]}>
+                      <p className={styles["filter-guests-title"]}>Children</p>
+                      <p className={styles["filter-guests-meta"]}>Ages 2-12</p>
+                      <div className={styles["filter-guests-button-container"]}>
+                        <button
+                          type="button"
+                          id="decrementChild"
+                          disabled={childGuestNumber < 1}
+                          className={`${
+                            styles[
+                              `filter-guest-button-disabled-${
+                                childGuestNumber < 1
+                              }`
+                            ]
+                          } ${styles["filter-guest-button"]}`}
+                          onClick={handleDecrementGuestClick}
+                        >
+                          <RemoveIcon />
+                        </button>
+                        <p className={styles["filter-guest-number-value"]}>
+                          {childGuestNumber}
+                        </p>
+                        <button
+                          type="button"
+                          id="incrementChild"
+                          className={styles["filter-guest-button"]}
+                          onClick={handleIncrementGuestClick}
+                        >
+                          <AddIcon />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
-          )}
-        </form>
-      </div>
+          </div>
+        )}
+      </form>
     </>
   );
 };

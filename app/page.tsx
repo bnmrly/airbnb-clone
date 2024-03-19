@@ -11,7 +11,6 @@ const Home = () => {
   const [searchResults, locationOption, uniqueLocations] = useSearchResults();
 
   return (
-    // TODO: revisit this - header inside here
     <div className={styles["app-container"]}>
       <header className={styles["header"]}>
         <a className={styles["link"]} href="/">
@@ -20,13 +19,16 @@ const Home = () => {
       </header>
       <main>
         {/* TODO: ADD SUSPENSE FALLBACK */}
-        <Form
-          locationOption={locationOption}
-          uniqueLocations={uniqueLocations}
-        />
+        <section>
+          <Form
+            locationOption={locationOption}
+            uniqueLocations={uniqueLocations}
+          />
+        </section>
         {/* {searchResults?.length > 0 && <Cards searchResults={searchResults} />} */}
-
-        <Cards searchResults={searchResults} />
+        <section>
+          <Cards searchResults={searchResults} />
+        </section>
       </main>
     </div>
   );
