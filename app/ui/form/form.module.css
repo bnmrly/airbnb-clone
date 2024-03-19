@@ -35,34 +35,29 @@
   /* prevents cutting off of border-radius */
   overflow: hidden;
   font-size: 0.9rem;
-  color: #333333;
+  color: #333;
   box-sizing: content-box;
 }
 
 
 .searchBar-input {
-  font-family: "Mulish", sans-serif;
   border-color: transparent;
   outline: none;
   height: 55px;
   border: none;
   padding: 0 16px;
   border-right: 1px solid #f2f2f2;
-  color: #333333;
+  color: #333;
   -webkit-font-smoothing: antialiased;
 }
-/* 
-this has this class on it too - need to add and tweak */
 
 .searchBar-input-location {
   background-color: transparent;
-  /* hack for input type="text" */
-  /* max-width: 108px; */
   max-width: 140px;
 }
 
 .searchBar-input-guests {
-  width: 108px;
+  width: 111px;
 }
 
 .searchBar-guests-container {
@@ -72,12 +67,6 @@ this has this class on it too - need to add and tweak */
   padding: 0 16px;
   border-right: 1px solid #f2f2f2;
 }
-
-/* multiple classes are knackered */
-
-/* .guests-container--0-guests {
-  color: #bdbdbd;
-} */
 
 .searchBar-submit-button {
   background-color: inherit;
@@ -92,37 +81,14 @@ this has this class on it too - need to add and tweak */
 }
 
 .searchBar-icon-container {
-  /* need to update config to be able to do below, see -  https://nextjs.org/docs/pages/building-your-application/configuring/post-css and https://github.com/vercel/next.js/issues/10475 */
   width: 24px;
   height: 24px;
-  /* svg {
-    color: rgba(235, 87, 87, 0.9);
-  }  */
 }
-
-/* add this above */
-.searchBar-submit-button:focus {
-  outline: none;
-}
-
-/* FilterForm Css */
 
 .filter-container {
-  /* position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  padding: 0;
-  background-color: white; */
   padding: 20px 10px;
-  /* border: 5px solid red; */
 }
 
-/* @media screen and (min-width: 1200px) {
-  .filter-container {
-    padding: 40px 80px;
-  }
-} */
 
 .filter-inner-container {
   position: relative;
@@ -147,7 +113,8 @@ this has this class on it too - need to add and tweak */
 .filter-heading {
   margin: 0;
   font-size: 0.8rem;
-  color: #333333;
+  color: #333;
+  font-weight: 400;
 }
 
 .filter-close-button {
@@ -157,7 +124,7 @@ this has this class on it too - need to add and tweak */
   border-width: 0;
   margin: 0 0 -4px 0;
   padding: 0;
-  color: #333333;
+  color: #333;
 }
 
 .filter-inputs-container {
@@ -165,22 +132,23 @@ this has this class on it too - need to add and tweak */
   box-shadow: 0 1px 6px rgb(0 0 0/10%);
   overflow: hidden;
   margin-bottom: 35px;
-  /* display: flex;
-  align-items: center; */
   width: 100%;
-  display: grid;
-  grid-template-columns: 40% 40% auto;
+}
+
+@media (min-width: 578px) {
+  .filter-inputs-container {
+    display: grid;
+    grid-template-columns: 40% 40% auto;
+  }
 }
 
 .filter-input-container {
-  font-family: "Mulish", sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 55px;
   padding: 0 26px;
   border-bottom: 1px solid #f2f2f2;
-  flex: 1;
 }
 
 .filter-search-container {
@@ -193,8 +161,9 @@ this has this class on it too - need to add and tweak */
   outline: none;
   border: none;
   padding: 0;
-  color: #333333;
+  color: #333;
   font-size: 0.9rem;
+  min-width: 105px;
 }
 
 .filter-label {
@@ -202,7 +171,7 @@ this has this class on it too - need to add and tweak */
   text-transform: uppercase;
   font-weight: 800;
   font-size: 0.6rem;
-  color: #333333;
+  color: #333;
 }
 
 .filter-guest-number-container-0 {
@@ -224,12 +193,17 @@ this has this class on it too - need to add and tweak */
 }
 
 @media (max-width: 577px) {
-  .filter-button {
+  .filter-search-container {
     position: absolute;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    margin-right: 0;
+  }
+}
+
+@media (max-width: 577px) {
+  .filter-button {
+   margin-right: 0;
   }
 }
 
@@ -237,15 +211,10 @@ this has this class on it too - need to add and tweak */
   margin-right: 5px;
 }
 
-.filter-location-container {
-  /* font-family: "Mulish", sans-serif;  */
-}
-
 .location-list-item {
-  font-family: "Mulish", sans-serif;
   color: #4F4F4F;
   font-size: 0.9rem;
-  margin-bottom: 20px;
+  margin-bottom: 35px;
 }
 
 .location-list-item-link {
@@ -268,11 +237,11 @@ this has this class on it too - need to add and tweak */
   }
 }
 
-
 @media (min-width: 576px) {
   .filter-guests-container {
     grid-column-start: 2;
     grid-column-end: -1;
+    padding-left: 26px;
   }
 }
 
@@ -301,28 +270,29 @@ this has this class on it too - need to add and tweak */
   font-size: 20px;
 }
 
-/* @media (min-width: 576px) {
-  .filter-drawer__filter--location {
-    grid-column-start: 1;
-    grid-column-end: 2;
-  }
-} */
-
 
 .filter-adults-guests-container {
   margin-bottom: 50px;
   padding: 0 16px;
 }
 
+@media (min-width: 576px) {
+  .filter-adults-guests-container, .filter-child-guests-container  {
+    padding: 0;
+  }
+}
+
 .filter-guests-title {
-  font-weight: 800;
+  font-weight: 400;
   padding-bottom: 5px;
   margin: 0;
+  color: #333;
 }
 
 .filter-guests-meta {
   margin: 0 0 15px 0;
   color: #bdbdbd;
+  font-size: 0.9rem;
 }
 
 .filter-guests-button-container {
@@ -349,5 +319,6 @@ this has this class on it too - need to add and tweak */
 
 .filter-guest-number-value {
   margin: 0 15px;
+  color: #333;
 }
 
