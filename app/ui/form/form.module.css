@@ -201,11 +201,9 @@ this has this class on it too - need to add and tweak */
   color: #333333;
 }
 
-
 .filter-guest-number-container-0 {
   color: #bdbdbd;
 }
-
 
 .filter-button {
   width: 126px;
@@ -236,7 +234,23 @@ this has this class on it too - need to add and tweak */
 }
 
 .filter-location-container {
+  /* font-family: "Mulish", sans-serif;  */
+}
+
+.location-list-item {
   font-family: "Mulish", sans-serif;
+  color: #4F4F4F;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.location-list-item-link {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+}
+.location-list-item-icon {
+  margin-right: 5px;
 }
 
 .filter-guests-location-container {

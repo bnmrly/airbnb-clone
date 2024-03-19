@@ -189,7 +189,6 @@ export const Form = (props: FormProps) => {
                   </div>
                 </div>
 
-                {/* </form> */}
                 <div className={styles["filter-guests-location-container"]}>
                   {locationFilterVisible && (
                     <div className={styles["filter-location-container"]}>
@@ -202,12 +201,13 @@ export const Form = (props: FormProps) => {
                             >
                               <Link
                                 href={`?location=${city}&guests=${totalGuestNumber}`}
+                                className={styles["location-list-item-link"]}
                               >
                                 <LocationOnIcon
                                   className={styles["location-list-item-icon"]}
                                 />
+                                {city}
                               </Link>
-                              {city}
                             </li>
                           );
                         })}
