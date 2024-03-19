@@ -1,44 +1,38 @@
 import Image from "next/image";
 import React from "react";
-import styles from "./cards.module.css";
+import { Stay } from "@/app/lib/types";
 
-interface Stay {
-  city: string;
-  country: string;
-  superHost: boolean;
-  title: string;
-  rating: number;
-  maxGuests: number;
-  type: string;
-  beds: number;
-  photo: string;
-}
+import styles from "@/app/ui/cards/cards.module.css";
 
-export const Cards = ({ staysData }: { staysData: Stay[] }) => {
+export const Cards = ({ searchResults }: { searchResults: Stay[] }) => {
   // Come back to this class and use an id as is just being used for the grid-template area
 
-  // staysData conditon for the heading needs changing to searchResults
+  // searchResults conditon for the heading needs changing to searchResults
+  // add suspsense fallback in page
+  if (searchResults?.length == 0) return <p>No stays Data</p>;
 
   return (
     <>
-      {staysData.length > 0 && (
+      {searchResults?.length && (
         <div className={styles["text-container"]}>
-          <h1 className={styles["heading"]}>Stays in {staysData[0].country}</h1>
+          <h1 className={styles["heading"]}>
+            Stays in {searchResults[0].country}
+          </h1>
           <p className={styles["result-count"]}>
-            {staysData.length > 1
-              ? `${staysData.length} stays`
-              : `${staysData.length} stay`}
+            {searchResults.length > 1
+              ? `${searchResults.length} stays`
+              : `${searchResults.length} stay`}
           </p>
         </div>
       )}
-      {!!staysData.length && (
+      {!!searchResults.length && (
         <div>
           <ul className={styles["list"]}>
-            {staysData.map((stay: Stay) => {
+            {searchResults.map((stay: Stay) => {
               return (
                 <div key={stay.photo}>
                   <div
-                    className={styles["image-container"]}
+                    className={styles["card-image-container"]}
                     style={{
                       backgroundImage: `url(${stay.photo})`,
                       backgroundPosition: "center",
@@ -46,16 +40,16 @@ export const Cards = ({ staysData }: { staysData: Stay[] }) => {
                       backgroundRepeat: "no-repeat",
                     }}
                   ></div>
-                  <div className={styles["meta-container"]}>
+                  <div className={styles["card-description-container"]}>
                     {stay.superHost && (
-                      <div className={styles["meta-superhost"]}>Superhost</div>
+                      <div className={styles["superhost"]}>Superhost</div>
                     )}
 
-                    <p className={styles["meta-type"]}>{stay.type} </p>
+                    <p className={styles["type"]}>{stay.type} </p>
                     {stay.beds && (
-                      <p className={styles["meta-beds"]}>. {stay.beds} beds</p>
+                      <p className={styles["beds"]}>. {stay.beds} beds</p>
                     )}
-                    <div className={styles["meta-rating__container"]}>
+                    <div className={styles["rating-container"]}>
                       <Image
                         className={styles["rating-image"]}
                         src="/star.svg"
@@ -63,9 +57,9 @@ export const Cards = ({ staysData }: { staysData: Stay[] }) => {
                         height={17}
                         width={16}
                       />
-                      <p className={styles["meta-rating"]}>{stay.rating}</p>
+                      <p className={styles["rating"]}>{stay.rating}</p>
                     </div>
-                    <p className={styles["meta-title"]}>{stay.title}</p>
+                    <p className={styles["title"]}>{stay.title}</p>
                   </div>
                 </div>
               );

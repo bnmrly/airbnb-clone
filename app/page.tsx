@@ -1,30 +1,32 @@
 "use client";
-
+import React from "react";
 import Image from "next/image";
-import styles from "./page.module.css";
-import React, { useState, useContext } from "react";
-import { Cards } from "./ui/cards/cards";
-import { SearchBar } from "./ui/searchBar/searchBar";
-import { FilterForm } from "./ui/filterForm/filterForm";
-// check this import - import Cards from "@/app/ui/dashboard/cards";
+import { useSearchResults } from "@/app/hooks/useSearchResults";
+import { Cards } from "@/app/ui/cards/cards";
+import { Form } from "@/app/ui/form/form";
 
-import { StaysContext } from "./context/index";
+import styles from "@/app/page.module.css";
 
 const Home = () => {
-  const appContext = useContext(StaysContext);
-  const { staysData } = appContext;
+  const [searchResults, locationOption, uniqueLocations] = useSearchResults();
 
   return (
+    // TODO: revisit this - header inside here
     <div className={styles["app-container"]}>
       <header className={styles["header"]}>
         <a className={styles["link"]} href="/">
           <Image src="/logo.svg" alt="logo" width={97} height={26} priority />
         </a>
-        <SearchBar staysData={staysData} />
-        <FilterForm staysData={staysData} />
       </header>
       <main>
-        <Cards staysData={staysData} />
+        {/* TODO: ADD SUSPENSE FALLBACK */}
+        <Form
+          locationOption={locationOption}
+          uniqueLocations={uniqueLocations}
+        />
+        {/* {searchResults?.length > 0 && <Cards searchResults={searchResults} />} */}
+
+        <Cards searchResults={searchResults} />
       </main>
     </div>
   );
