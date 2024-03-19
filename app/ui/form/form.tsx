@@ -254,7 +254,7 @@ export const Form = (props: FormProps) => {
                           </button>
                         </div>
                       </div>
-                      <div>
+                      <div className={styles["filter-child-guests-container"]}>
                         <p className={styles["filter-guests-title"]}>
                           Children
                         </p>
@@ -270,7 +270,7 @@ export const Form = (props: FormProps) => {
                             disabled={childGuestNumber < 1}
                             className={
                               styles[
-                                `filter-guests-button--disabled-${
+                                `filter-guest-button--disabled-${
                                   childGuestNumber < 1
                                 }`
                               ]

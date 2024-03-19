@@ -264,6 +264,9 @@ this has this class on it too - need to add and tweak */
   }
 }
 
+.filter-child-guests-container {
+  padding: 0 16px;
+}
 /* @media (min-width: 576px) {
   .filter-drawer__filter--guests {
     grid-column-start: 2;
@@ -334,7 +337,7 @@ this has this class on it too - need to add and tweak */
   
 }
 
-.filter-guests-button-disabled-true {
+.filter-guest-button-disabled-true  {
   color: #cccccc;
   border: 1px solid #cccccc;
 }
