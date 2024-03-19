@@ -19,7 +19,7 @@
 # misc
 .DS_Store
 *.pem
-todonotes.md
+todonotes.txt
 
 # debug
 npm-debug.log*
