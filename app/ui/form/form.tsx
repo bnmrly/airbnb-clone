@@ -228,13 +228,13 @@ export const Form = (props: FormProps) => {
                             type="button"
                             id="decrementAdult"
                             disabled={adultGuestNumber < 1}
-                            className={
+                            className={`${
                               styles[
-                                `filter-guests-button-disabled-${
+                                `filter-guest-button-disabled-${
                                   adultGuestNumber < 1
                                 }`
                               ]
-                            }
+                            } ${styles["filter-guest-button"]}`}
                             onClick={handleDecrementGuestClick}
                           >
                             <RemoveIcon />
@@ -268,13 +268,13 @@ export const Form = (props: FormProps) => {
                             type="button"
                             id="decrementChild"
                             disabled={childGuestNumber < 1}
-                            className={
+                            className={`${
                               styles[
-                                `filter-guest-button--disabled-${
+                                `filter-guest-button-disabled-${
                                   childGuestNumber < 1
                                 }`
                               ]
-                            }
+                            } ${styles["filter-guest-button"]}`}
                             onClick={handleDecrementGuestClick}
                           >
                             <RemoveIcon />
