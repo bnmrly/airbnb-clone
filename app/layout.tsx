@@ -2,16 +2,12 @@ import type { Metadata } from "next";
 import { Montserrat, Mulish } from "next/font/google";
 import "./globals.css";
 
-// come back to this - mulish and anti-aliasing
-
 const montserrat = Montserrat({
   subsets: ["latin"],
-  // weight: ["500", "700"],
 });
 
 const mulish = Mulish({
   subsets: ["latin"],
-  // weight: ["500", "700"],
 });
 
 export const metadata: Metadata = {
