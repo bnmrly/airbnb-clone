@@ -1,54 +1,59 @@
-"use client";
-import { useState, useEffect } from "react";
-import { fetchCardData } from "@/app/lib/data";
-import { Stay } from "@/app/lib/types";
-import { useSearchParams } from "next/navigation";
-import { extractCityFromQueryParam } from "@/app/utilities/extractCityFromQueryParam";
+// "use client";
+// import { useState, useEffect } from "react";
+// import { fetchCardData } from "@/app/lib/data";
+// import { Stay } from "@/app/lib/types";
+// import { useSearchParams } from "next/navigation";
+// import { extractCityFromQueryParam } from "@/app/utilities/extractCityFromQueryParam";
 
-export const useSearchResults = () => {
-  const [searchResults, setSearchResults] = useState<Stay[]>([]);
-  const [uniqueLocations, setUniqueLocations] = useState<string[]>([]);
-  const searchParams = useSearchParams();
-  const guests = searchParams.get("guests")
-    ? Number(searchParams.get("guests"))
-    : 0;
+// export const useSearchResults = () => {
+//   const [searchResults, setSearchResults] = useState<Stay[]>([]);
+//   const [uniqueLocations, setUniqueLocations] = useState<string[]>([]);
+//   const searchParams = useSearchParams();
+//   const guests = searchParams.get("guests")
+//     ? Number(searchParams.get("guests"))
+//     : 0;
 
-  const locationOption = searchParams.get("location") || uniqueLocations[0];
+//   const locationOption = searchParams.get("location") || uniqueLocations[0];
 
-  const showResults = searchParams.get("showResults") || "";
+//   const showResults = searchParams.get("showResults") || "";
 
-  useEffect(() => {
-    console.log("TODO: REVISIT USEEFFECT DEPS ARRAY");
-    const getCardData = async () => await fetchCardData();
+//   const [loading, setLoading] = useState(true);
 
-    try {
-      getCardData().then((data) => {
-        const allCities: string[] = data?.staysData.map(
-          (stay: Stay) => `${stay.city}-${stay.country}`
-        );
+//   useEffect(() => {
+//     console.log("TODO: REVISIT USEEFFECT DEPS ARRAY");
+//     const getCardData = async () => await fetchCardData();
+//     console.log("useEffect --- getCardData:", getCardData());
 
-        const uniqueCities = [...new Set(allCities)];
+//     try {
+//       getCardData().then((data) => {
+//         const allCities: string[] = data?.staysData.map(
+//           (stay: Stay) => `${stay.city}-${stay.country}`
+//         );
 
-        setUniqueLocations(uniqueCities);
+//         const uniqueCities = [...new Set(allCities)];
 
-        if (!guests) setSearchResults(data?.staysData);
+//         setUniqueLocations(uniqueCities);
 
-        if (guests && showResults) {
-          const cityFromQuery = extractCityFromQueryParam(locationOption);
+//         if (!guests) setSearchResults(data?.staysData);
 
-          const filteredResults = data.staysData.filter(
-            (stay: Stay) =>
-              stay.city.includes(cityFromQuery) && stay.maxGuests >= guests
-          );
+//         if (guests && showResults) {
+//           const cityFromQuery = extractCityFromQueryParam(locationOption);
 
-          setSearchResults(filteredResults);
-        }
-      });
-    } catch (error) {
-      console.error("Error:", error);
-      throw new Error("Failed to fetch card data.");
-    }
-  }, [guests, locationOption, showResults]);
+//           const filteredResults = data.staysData.filter(
+//             (stay: Stay) =>
+//               stay.city.includes(cityFromQuery) && stay.maxGuests >= guests
+//           );
 
-  return [searchResults, locationOption, uniqueLocations] as const;
-};
+//           setSearchResults(filteredResults);
+
+//           setLoading(false);
+//         }
+//       });
+//     } catch (error) {
+//       console.error("Error:", error);
+//       throw new Error("Failed to fetch card data.");
+//     }
+//   }, [guests, locationOption, showResults]);
+
+//   return [loading, searchResults, locationOption, uniqueLocations] as const;
+// };

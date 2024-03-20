@@ -1,13 +1,74 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { useSearchResults } from "@/app/hooks/useSearchResults";
+// import { useSearchResults } from "@/app/hooks/useSearchResults";
 import { Cards } from "@/app/ui/cards/cards";
 import { Form } from "@/app/ui/form/form";
+
+import { fetchCardData } from "@/app/lib/data";
+import { Stay } from "@/app/lib/types";
+import { useSearchParams } from "next/navigation";
+import { extractCityFromQueryParam } from "@/app/utilities/extractCityFromQueryParam";
 
 import styles from "@/app/page.module.css";
 
 const Home = () => {
+  const [loading, setLoading] = useState(true);
+
+  // TODO: WHEN WORKING PUT THIS OUTSIDE OF COMPONENT
+
+  const useSearchResults = () => {
+    const [searchResults, setSearchResults] = useState<Stay[] | null>(null);
+    const [uniqueLocations, setUniqueLocations] = useState<string[]>([]);
+    const searchParams = useSearchParams();
+    const guests = searchParams.get("guests")
+      ? Number(searchParams.get("guests"))
+      : 0;
+
+    const locationOption = searchParams.get("location") || uniqueLocations[0];
+
+    const showResults = searchParams.get("showResults") || "";
+
+    useEffect(() => {
+      console.log("TODO: REVISIT USEEFFECT DEPS ARRAY");
+      const getCardData = async () => await fetchCardData();
+
+      try {
+        getCardData().then((data) => {
+          const allCities: string[] = data?.staysData.map(
+            (stay: Stay) => `${stay.city}-${stay.country}`
+          );
+
+          const uniqueCities = [...new Set(allCities)];
+
+          setUniqueLocations(uniqueCities);
+
+          if (!guests) setSearchResults(data?.staysData);
+
+          if (guests && showResults) {
+            const cityFromQuery = extractCityFromQueryParam(locationOption);
+
+            const filteredResults = data.staysData.filter(
+              (stay: Stay) =>
+                stay.city.includes(cityFromQuery) && stay.maxGuests >= guests
+            );
+            if (filteredResults.length === 0) {
+              console.log("No results found");
+              setSearchResults(null);
+            } else setSearchResults(filteredResults);
+          }
+        });
+      } catch (error) {
+        console.error("Error:", error);
+        throw new Error("Failed to fetch card data.");
+      } finally {
+        setLoading(false);
+      }
+    }, [guests, locationOption, showResults]);
+
+    return [searchResults, locationOption, uniqueLocations] as const;
+  };
+
   const [searchResults, locationOption, uniqueLocations] = useSearchResults();
 
   return (
@@ -18,16 +79,15 @@ const Home = () => {
         </a>
       </header>
       <main>
-        {/* TODO: ADD SUSPENSE FALLBACK */}
         <section>
           <Form
             locationOption={locationOption}
             uniqueLocations={uniqueLocations}
           />
         </section>
-        {/* {searchResults?.length > 0 && <Cards searchResults={searchResults} />} */}
         <section>
-          <Cards searchResults={searchResults} />
+          {loading && <Loading />}
+          {!loading && <Cards searchResults={searchResults} />}
         </section>
       </main>
     </div>
@@ -35,3 +95,9 @@ const Home = () => {
 };
 
 export default Home;
+
+const Loading = () => {
+  console.log("hello loading...");
+
+  return <h1>Loading...</h1>;
+};

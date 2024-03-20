@@ -4,10 +4,7 @@ import { Stay } from "@/app/lib/types";
 
 import styles from "@/app/ui/cards/cards.module.css";
 
-export const Cards = ({ searchResults }: { searchResults: Stay[] }) => {
-  // add suspsense fallback in page
-  if (searchResults?.length == 0) return <p>No stays Data</p>;
-
+export const Cards = ({ searchResults }: { searchResults: Stay[] | null }) => {
   return (
     <>
       {searchResults?.length && (
@@ -22,7 +19,7 @@ export const Cards = ({ searchResults }: { searchResults: Stay[] }) => {
           </p>
         </div>
       )}
-      {!!searchResults.length && (
+      {searchResults?.length && (
         <div>
           <ul className={styles["list"]}>
             {searchResults.map((stay: Stay) => {
