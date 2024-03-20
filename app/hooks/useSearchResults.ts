@@ -18,7 +18,7 @@ export const useSearchResults = () => {
   const showResults = searchParams.get("showResults") || "";
 
   useEffect(() => {
-    console.log("TODO: REVISIT USEEFFECT AS THIS IS FIRING THREE TIMES");
+    console.log("TODO: REVISIT USEEFFECT DEPS ARRAY");
     const getCardData = async () => await fetchCardData();
 
     try {
