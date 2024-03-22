@@ -30,7 +30,7 @@ const Home = () => {
     const showResults = searchParams.get("showResults") || "";
 
     useEffect(() => {
-      console.log("TODO: REVISIT USEEFFECT DEPS ARRAY");
+      console.log("TODO: revisit useEffect");
       const getCardData = async () => await fetchCardData();
 
       try {

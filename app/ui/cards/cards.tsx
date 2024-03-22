@@ -5,6 +5,7 @@ import { Stay } from "@/app/lib/types";
 import styles from "@/app/ui/cards/cards.module.css";
 
 export const Cards = ({ searchResults }: { searchResults: Stay[] | null }) => {
+  console.log("TODO: Add loading skeleton");
   return (
     <>
       {searchResults?.length && (
