@@ -1,7 +1,10 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-// import { useSearchResults } from "@/app/hooks/useSearchResults";
+import {
+  CardsSkeleton,
+  CardsHeadingContainerSkeleton,
+} from "./ui/skeletons/skeletons";
 import { Cards } from "@/app/ui/cards/cards";
 import { Form } from "@/app/ui/form/form";
 
@@ -14,8 +17,6 @@ import styles from "@/app/page.module.css";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
-
-  // TODO: WHEN WORKING PUT THIS OUTSIDE OF COMPONENT
 
   const useSearchResults = () => {
     const [searchResults, setSearchResults] = useState<Stay[] | null>(null);
@@ -86,7 +87,8 @@ const Home = () => {
           />
         </section>
         <section>
-          {loading && <Loading />}
+          {loading && <CardsHeadingContainerSkeleton />}
+          {loading && <CardsSkeleton />}
           {!loading && <Cards searchResults={searchResults} />}
         </section>
       </main>
@@ -95,9 +97,3 @@ const Home = () => {
 };
 
 export default Home;
-
-const Loading = () => {
-  console.log("hello loading...");
-
-  return <h1>Loading...</h1>;
-};

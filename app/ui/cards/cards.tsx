@@ -5,7 +5,6 @@ import { Stay } from "@/app/lib/types";
 import styles from "@/app/ui/cards/cards.module.css";
 
 export const Cards = ({ searchResults }: { searchResults: Stay[] | null }) => {
-  console.log("TODO: Add loading skeleton");
   return (
     <>
       {searchResults?.length && (
@@ -25,7 +24,7 @@ export const Cards = ({ searchResults }: { searchResults: Stay[] | null }) => {
           <ul className={styles["list"]}>
             {searchResults.map((stay: Stay) => {
               return (
-                <div key={stay.photo}>
+                <li key={stay.photo}>
                   <div
                     className={styles["card-image-container"]}
                     style={{
@@ -56,7 +55,7 @@ export const Cards = ({ searchResults }: { searchResults: Stay[] | null }) => {
                     </div>
                     <p className={styles["title"]}>{stay.title}</p>
                   </div>
-                </div>
+                </li>
               );
             })}
           </ul>
