@@ -2,7 +2,14 @@
 .cards-skeleton-heading-container {
   display: flex;
   justify-content: space-between;
-  margin: 50px 0 20px 0;
+  margin: 30px 0 20px 0;
+}
+
+@media screen and (min-width: 578px) {
+  .cards-skeleton-heading-container {
+    margin-top: 50px;
+  }
+  
 }
 
 .cards-skeleton-heading {
@@ -49,6 +56,7 @@
   width: 170px;
   border-radius: 15px;
 }
+
 .card-skeleton-ratings {
   background-color: lightgrey;
   height: 17px;

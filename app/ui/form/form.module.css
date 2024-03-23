@@ -230,14 +230,14 @@
   min-height: 240px;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 578px) {
   .filter-guests-location-container  {
    display: grid;
    grid-template-columns: 40% 60%;
   }
 }
 
-@media (min-width: 576px) {
+@media (min-width: 578px) {
   .filter-guests-container {
     grid-column-start: 2;
     grid-column-end: -1;
@@ -275,7 +275,7 @@
   padding: 0 16px;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 578px) {
   .filter-adults-guests-container, .filter-child-guests-container  {
     padding: 0;
   }
